@@ -11,11 +11,21 @@ package battery;
  */
 public class Battery {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        String[Battery]
-    }
+    private double energy;
+    private double maxPower;
     
+    public Battery(){
+        energy = -1;
+        maxPower = -1;
+}
+    public Battery (double energy, double maxPower){
+        energy = energy;
+        maxPower = maxPower;
+    }
+    public double getEnergy(){
+        return energy;
+    }
+    public double getMaxPower(){
+        return maxPower;
+    }
 }
