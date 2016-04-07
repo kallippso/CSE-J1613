@@ -10,12 +10,19 @@ package locomotor;
  * @author Kallippso
  */
 public class Locomotor {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    private int maxSpeed;
+   
+    public Locomotor() {
+        maxSpeed = -1;
     }
-    
+    public Locomotor(int maxSpeed){
+        maxSpeed = maxSpeed;
+    }
+    public int getMaxSpeed(){
+        return maxSpeed; 
+    }
+    public int powerComsumed(int speed){
+        speed = speed;
+        return speed;
+     }
 }
