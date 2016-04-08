@@ -32,6 +32,8 @@ public class RobotModel {
         numRobots++;
     }
     
+    // This is missing RobotPart[] - Ody
+    
     public double componentCost()
     {
         return price/robotParts.length;
