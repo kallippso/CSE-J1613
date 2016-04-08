@@ -19,8 +19,8 @@ public class Battery {
         maxPower = -1;
 }
     public Battery (double energy, double maxPower){
-        energy = energy;
-        maxPower = maxPower;
+        this.energy = energy;
+        this.maxPower = maxPower;
     }
     public double getEnergy(){
         return energy;
