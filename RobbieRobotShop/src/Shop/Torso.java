@@ -11,7 +11,7 @@ import java.awt.image.RenderedImage;
  *
  * @author christian
  */
-public class Torso {
+public class Torso extends RobotPart{
     private final int batteryCompartments;
     private Head head;
     private Arm[] arms;

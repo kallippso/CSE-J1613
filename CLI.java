@@ -88,13 +88,13 @@ public class CLI {
             switch(choice2)
             {
                 case 1:
-                    System.out.println("This functionality has not been implemented in the current build.");
+                    createOrder();
                     break;
                 case 2:
-                    System.out.println("This functionality has not been implemented in the current build.");
+                    createCustomer();
                     break;
                 case 3:
-                    System.out.println("This functionality has not been implemented in the current build.");
+                    createSalesAssoc();
                     break;
                 case 4:
                     createRobotModel();
@@ -367,6 +367,128 @@ public class CLI {
             }
             okay = false;
         }
+    }
+    
+    public void createOrder()
+    {
+        String reply;
+        boolean okay;
+        final int MIN_YEAR = 2000, MAX_YEAR = 2020;
+        int num, m, d, y, search, s;
+        Date date;
+        //Customer cust;
+        //SalesAssoc sales;
+        //RobotModel model;
+        Status status;
+        
+        System.out.print("Enter the order number of the order: ");
+        num = keyboard.nextInt();
+        System.out.print("Do you want to use today's date for the order (Y/N): ");
+        reply = keyboard.next();
+        if(reply.toLowerCase().equals("y"))
+        {
+            date = new Date();
+        }
+        else
+        {
+            System.out.print("Enter the number of month of the order: ");
+            m = keyboard.nextInt();
+            while(m > 12 || m < 1)
+            {
+                System.out.print("Invalid month. Enter an integer between 1 and 12 (inclusive): ");
+                m = keyboard.nextInt();
+            }
+            System.out.print("Enter the day of the order: ");
+            d = keyboard.nextInt();
+            while(d > 31 || d < 1)
+            {
+                System.out.print("Invalid day. Enter an integer between 1 and 31 (inclusive): ");
+                d = keyboard.nextInt();
+            }
+            System.out.print("Enter the year of the order: ");
+            y = keyboard.nextInt();
+            while(y > MAX_YEAR || y < MIN_YEAR)
+            {
+                System.out.printf("Invalid year. Enter a integer between %d and %d (inclusive): ", MIN_YEAR, MAX_YEAR);
+                y = keyboard.nextInt();
+            }
+            date = new Date(m, d, y);
+        }
+        okay = true;
+        while(okay)
+        {
+            System.out.print("Enter the customer number of the customer associated with the order: ");
+            search = keyboard.nextInt();
+            /*if(robotShop.getCustomer(search) != null)
+                cust = robotShop.getCustomer(search);
+            else
+            {
+                System.out.println("\nA customer with that customer number could not be found in the shop.");
+                okay = false;
+                break;
+            }*/
+            System.out.print("Enter the employee number of the sales associate associated with the order: ");
+            search = keyboard.nextInt();
+            /*if(robotShop.getSalesAssoc(search) != null)
+                sales = robotShop.getSalesAssoc(search);
+            else
+            {
+                System.out.println("\nA sales associate with that employee number could not be found in the shop.");
+                okay = false;
+                break;
+            }*/
+            System.out.print("Enter the model number of the robot model associated with the order: ");
+            search = keyboard.nextInt();
+            /*if(robotShop.getRobotModel(search) != null)
+                model = robotShop.getRobotModel(search);
+            else
+            {
+                System.out.println("\nA robot model with that model number could not be found in the shop.");
+                okay = false;
+                break;
+            }*/
+            System.out.print("Enter the status of the order (0 - Processing, 1 - Working, 2 - Ready, 3 - Shipping, 4 - Completed): ");
+            s = keyboard.nextInt();
+            while(s > 4 || s < 0)
+            {
+                System.out.print("Invalid status. Enter an integer between 0 and 4 (inclusive): ");
+                s = keyboard.nextInt();
+            }
+            status = new Status(s);
+            //robotShop.placeOrder(num, date, cust, sales, model, status);
+            System.out.println("\nOrder number " + num + " for robot model " + search + " has been placed on " + date + " by a sales associate for a customer.\nThe status of the order is: " + status);
+            okay = false;
+        }
+    }
+    
+    public void createCustomer()
+    {
+        String reply;
+        String name;
+        int num;
+        
+        keyboard.nextLine(); //buffer
+        System.out.print("Enter the name of the customer: ");
+        name = keyboard.nextLine();
+        System.out.print("Enter the customer number of the customer: ");
+        num = keyboard.nextInt();
+        //robotShop.newCustomer(name, num);
+        System.out.println("\nA customer of name " + name + " and number " + num + " has been added to the shop.");
+    }
+    
+    public void createSalesAssoc()
+    {
+        String reply;
+        String name;
+        int num;
+        
+        keyboard.nextLine(); //buffer
+        System.out.print("Enter the name of the sales associate: ");
+        name = keyboard.nextLine();
+        System.out.print("Enter the employee number of the sales associate: ");
+        num = keyboard.nextInt();
+        //robotShop.newSalesAssoc(name, num);
+        System.out.println("\nA sales associate of name " + name + " and employee number " + num + " has been added to the shop.");
     }
     
     public static void main(String [] args)

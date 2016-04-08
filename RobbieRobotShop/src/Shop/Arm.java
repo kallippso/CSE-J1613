@@ -1,5 +1,5 @@
 
-package j1613;          // Change to whatever package name will be
+package Shop;          // Change to whatever package name will be
 
 /**
  * Name: John Ngo
@@ -13,12 +13,15 @@ import java.awt.image.RenderedImage;
 public class Arm extends RobotPart{
     
     //private instance variables
-    componentType = "arm";
+    private final ComponentType componentType = new ComponentType("Arm", this.getClass());
+    private String name, description;
+    private int partNumber;
+    private double weight, cost;
+    private RenderedImage image;
     
     //constructors
     public Arm(){
         name = "ARMin";
-        componentType = "arm";
         partNumber = -1;
         weight = -1;
         cost = -1;
@@ -28,7 +31,6 @@ public class Arm extends RobotPart{
     
     public Arm(String name, int partNumber, double weight, double cost){
         this.name = name;
-        componentType = "arm";
         this.partNumber = partNumber;
         this.weight = weight;
         this.cost = cost;
@@ -37,7 +39,15 @@ public class Arm extends RobotPart{
     }
     public Arm(String name, int partNumber, double weight, double cost, String description){
         this.name = name;
-        componentType = "arm";
+        this.partNumber = partNumber;
+        this.weight = weight;
+        this.cost = cost;
+        this.description = description;
+        image = null;
+    }
+    
+    public Arm(String name, ComponentType type, int partNumber, double weight, double cost, String description){
+        this.name = name;
         this.partNumber = partNumber;
         this.weight = weight;
         this.cost = cost;
@@ -69,6 +79,34 @@ public class Arm extends RobotPart{
     public void setImage(RenderedImage image)
     {
         this.image = image;
+    }
+    public String getName()
+    {
+        return name;
+    }
+    public ComponentType getComponentType()
+    {
+        return componentType;
+    }
+    public int getPartNumber()
+    {
+        return partNumber;
+    }
+    public double getWeight()
+    {
+        return weight;
+    }
+    public double getCost()
+    {
+        return cost;
+    }
+    public String getDescription()
+    {
+        return description;
+    }
+    public RenderedImage getImage()
+    {
+        return image;
     }
     
     int powerConsumed(int speed){

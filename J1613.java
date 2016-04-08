@@ -1,4 +1,4 @@
-
+As
 package j1613;          // Change to whatever package name will be
 
 /**
@@ -53,4 +53,20 @@ public class J1613 {
     {
         robotModels.add(new RobotModel(head, motor, body, b1, b2, b3, arm1, arm2));
     }
+    
+    public void placeOrder(int num, Date date, Customer cust, SalesAssoc sales, RobotModel model, Status status)
+    {
+        orders.add(new Order(num, date, cust, sales, model, status));
+    }
+    
+    public void newCustomer(String name, int num)
+    {
+        customers.add(new Customer(name, num));
+    }
+    
+    public void newSalesAssoc(String name, int num)
+    {
+        salesAssoc.add(new SalesAssoc(name, num));
+    }
+    
 }

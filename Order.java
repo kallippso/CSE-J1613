@@ -12,11 +12,11 @@ public class Order {
     
     // private instance variables
     private int orderNumber;
-    Date date;
-    Customer customer;
-    SalesAssoc salesAssoc;
-    RobotModel robotModel;
-    Status status;
+    private Date date;
+    private Customer customer;
+    private SalesAssoc salesAssoc;
+    private RobotModel robotModel;
+    private Status status;
     
     // constructors
     public Order()
@@ -26,19 +26,30 @@ public class Order {
         customer = new Customer();
         salesAssoc = new SalesAssoc();
         robotModel = new RobotModel();
-        status = "processing";
+        status = new Status(0);
     }
     
-    public Order(int num, Customer cust, SalesAssoc staff, RobotModel model, Status stat)
+    public Order(int num, Date date, Customer cust, SalesAssoc staff, RobotModel model, Status stat)
     {
-        orderNumber = num;
-        customer = cust;
-        salesAssoc = staff;
-        robotModel = model;
-        status = stat;
+        this.orderNumber = num;
+        this.date = date;
+        this.customer = cust;
+        this.salesAssoc = staff;
+        this.robotModel = model;
+        this.status = stat;
     }
     
-    // getters
+    public Order(int num, Date date, Customer cust, SalesAssoc staff, RobotModel model, int stat)
+    {
+        this.orderNumber = num;
+        this.date = date;
+        this.customer = cust;
+        this.salesAssoc = staff;
+        this.robotModel = model;
+        this.status = new Status(stat);
+    }
+    
+    // getters and setters
     public int getOrderNumber() {
         return orderNumber;
     }
@@ -58,9 +69,33 @@ public class Order {
     public RobotModel getRobotModel() {
         return robotModel;
     }
-
+    
     public Status getStatus() {
         return status;
+    }
+
+    public void setOrderNumber(int orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public void setSalesAssoc(SalesAssoc salesAssoc) {
+        this.salesAssoc = salesAssoc;
+    }
+
+    public void setRobotModel(RobotModel robotModel) {
+        this.robotModel = robotModel;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
     
     // methods
@@ -73,7 +108,7 @@ public class Order {
     {
         double shipping;
         if (this.robotPrice() >= 50)
-            shipping = 10.99;
+            shipping = 4.99;
         else
             shipping = 10.99;
         return shipping;  
