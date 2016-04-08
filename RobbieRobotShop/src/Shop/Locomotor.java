@@ -16,7 +16,7 @@ public class Locomotor {
         maxSpeed = -1;
     }
     public Locomotor(int maxSpeed){
-        maxSpeed = maxSpeed;
+        this.maxSpeed = maxSpeed;
     }
     public int getMaxSpeed(){
         return maxSpeed; 
