@@ -14,11 +14,11 @@ public class RobotModel {
     int modelNumber;
     double price;
     RobotPart[] robotParts;
-    int numRobots;
+    int numRobotParts;
     
     public RobotModel()
     {
-        name = String.format("Robot%4d", numRobots++);
+        name = String.format("Robot%4d", numRobotParts++);
         price = 200;
         modelNumber = 1;
     }
@@ -29,10 +29,53 @@ public class RobotModel {
         this.modelNumber = modelNumber;
         this.price = price;
         this.robotParts = robotParts;
-        numRobots++;
+        numRobotParts++;
     }
     
-    // This is missing RobotPart[] - Ody
+    public String getName()
+    {
+        return name;
+    }
+    
+    public int getModelNumber()
+    {
+        return modelNumber;
+    }
+    
+    public double getPrice()
+    {
+        return price;
+    }
+    
+    public RobotPart[] getRobotParts()
+    {
+        return robotParts;
+    }
+    
+    public int getNumRobotParts()
+    {
+        return numRobotParts;
+    }
+    
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+    
+    public void setModelNumber(int modelNumber)
+    {
+        this.modelNumber = modelNumber;
+    }
+    
+    public void setPrice(double price)
+    {
+        this.price = price;
+    }
+    
+    public void setRobotParts(RobotPart[] robotParts)
+    {
+        this.robotParts = robotParts;
+    }
     
     public double componentCost()
     {

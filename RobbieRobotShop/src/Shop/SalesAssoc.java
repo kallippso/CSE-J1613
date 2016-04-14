@@ -3,28 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package salesassoc;
+package Shop;
 
- */
-public class SalesAssoc;
+public class SalesAssoc
 {
    
     private String name;
     private int employeeNumber;
-    private int orders; 
+    private Order orders; 
     
     
-    public employee()
+    public SalesAssoc()
     {
-        name;
-        employeenumber;
-        orders; 
     }
     
-    public employee(String name, int employeeNumber, int orders)
+    public SalesAssoc(String name, int employeeNumber, Order orders)
     {
         this.name = name;
-        this.number = number;
+        this.employeeNumber = employeeNumber;
         this.orders = orders;
     }
     
@@ -34,13 +30,14 @@ public class SalesAssoc;
         return name;
     }
     
-    public int getemployeeNumber()
+    public int getEmployeeNumber()
     {
-        return customerNumber;
+        return employeeNumber;
     }
     
-    public order getorders()
+    public Order getOrders()
     {
         return orders;
     }
+}
     

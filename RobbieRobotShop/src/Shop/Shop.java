@@ -24,14 +24,15 @@ public class Shop {
         customers= null;
         salesAssoc = null;
     }
-    public Shop()
+    
+    public Shop(Order[] orders, RobotModel[] robotModels, Customer[] customers, SalesAssoc[] salesAssoc)
     {
         orders = orders;
         robotModels = robotModels;
         customers = customers;
         salesAssoc = salesAssoc;
     }
-    public Orders[] getOrders()
+    public Order[] getOrders()
     {
         return orders;
     }
@@ -39,7 +40,7 @@ public class Shop {
     {
         return robotModels;
     }
-    public Customers[] getCustomers()
+    public Customer[] getCustomers()
     {
         return customers;
     }
