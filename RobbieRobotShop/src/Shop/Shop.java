@@ -4,27 +4,50 @@
  * and open the template in the editor.
  */
 package Shop;
+
 import java.awt.image.RenderedImage;
 
 /**
  *
- * @author Luis
+ * @author Kallippso
  */
 public class Shop {
 
-    public static void main(String[] args) {
-
-
+    private Order[] orders;
+    private RobotModel[] robotModels;
+    private Customer[] customers;
+    private SalesAssoc[] salesAssoc;
+    
+    public Shop(){
+        orders = null;
+        robotModels = null;
+        customers= null;
+        salesAssoc = null;
     }
-
-
     public Shop()
     {
-
-
+        orders = orders;
+        robotModels = robotModels;
+        customers = customers;
+        salesAssoc = salesAssoc;
     }
-
-
+    public Orders[] getOrders()
+    {
+        return orders;
+    }
+    public RobotModel[] getRobotModels()
+    {
+        return robotModels;
+    }
+    public Customers[] getCustomers()
+    {
+        return customers;
+    }
+    public SalesAssoc[] getSalesAssoc()
+    {
+        return salesAssoc;
+    }
+    
     public void createPart(ComponentType componentName, String name, double weight, double cost, String description, RenderedImage image)
     {
        RobotPart newModel;
@@ -56,32 +79,18 @@ public class Shop {
                
        }
     }
-
-
-    void newCustomer()
+    
+    public void createRobotModel()
     {
-
-
     }
-
-    void placeOrder()
+    public void newCustomer()
     {
-
-
     }
-
-
-    void runReport()
-    {
-
-
+    public void placeOrder()
+    {    
     }
-
-
-    void save()
-    {
-
-
-    }
-
+    
 }
+    
+    
+    
