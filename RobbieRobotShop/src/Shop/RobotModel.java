@@ -9,11 +9,14 @@ package Shop;
  *
  * @author christian
  */
+
+import java.util.ArrayList;
+
 public class RobotModel {
     private String name;
     private int modelNumber;
     private double price;
-    private RobotPart[] robotParts;
+    private ArrayList<RobotPart> robotParts;
     private int numRobots;
     
     public RobotModel()
@@ -21,15 +24,29 @@ public class RobotModel {
         name = String.format("Robot%4d", numRobots++);
         price = 200;
         modelNumber = 1;
-        robotParts = null;
+        robotParts = new ArrayList<>();
     }
     
-    public RobotModel(String name, int modelNumber, double price, RobotPart[] robotParts)
+    public RobotModel(String name, int modelNumber, double price, ArrayList<RobotPart> robotParts)
     {
         this.name = name;
         this.modelNumber = modelNumber;
         this.price = price;
         this.robotParts = robotParts;
+        numRobots++;
+    }
+    
+    public RobotModel(String name, int modelNumber, double price, Head head, Locomotor motor, Torso body, Battery b1, Arm arm1)
+    {
+        this.name = name;                                   // Constructor for a robot with 1 battery and 1 arm
+        this.modelNumber = modelNumber;
+        this.price = price;
+        robotParts = new ArrayList<>();
+        robotParts.add(head);
+        robotParts.add(motor);
+        robotParts.add(body);
+        robotParts.add(b1);
+        robotParts.add(arm1);
         numRobots++;
     }
     
