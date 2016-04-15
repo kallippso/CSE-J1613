@@ -11,16 +11,17 @@ package Shop;
  */
 public class RobotModel {
     private String name;
-    int modelNumber;
-    double price;
-    RobotPart[] robotParts;
-    int numRobots;
+    private int modelNumber;
+    private double price;
+    private RobotPart[] robotParts;
+    private int numRobots;
     
     public RobotModel()
     {
         name = String.format("Robot%4d", numRobots++);
         price = 200;
         modelNumber = 1;
+        robotParts = null;
     }
     
     public RobotModel(String name, int modelNumber, double price, RobotPart[] robotParts)
