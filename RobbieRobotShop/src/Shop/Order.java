@@ -1,5 +1,5 @@
 
-package j1613;          // Change to whatever package name will be
+package Shop;          // Change to whatever package name will be
 
 /**
  * Name: John Ngo
@@ -122,5 +122,18 @@ public class Order {
     public double totalPrice()
     {
         return this.robotPrice() + this.calculateShipping() + this.calculateTax();
+    }
+    
+    @Override
+    public String toString()
+    {
+        String results = "\nOrder Number: " + orderNumber;
+        results += "\nDate: " + date;
+        results += "\nCustomer: " + customer.getName();
+        results += "\nSales Associate: " + salesAssoc.getName();
+        results += "\nRobot Model: " + robotModel.getName() + " [" + robotModel.getModelNumber() + "]";
+        results += "\nStatus: " + status + "\n";
+        
+        return results;
     }
 }
