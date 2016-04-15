@@ -8,42 +8,23 @@ package GUI;
 import static com.sun.org.apache.xerces.internal.util.DOMUtil.setVisible;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Writer;
 import java.util.ArrayList;
-import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import static sun.security.jgss.GSSUtil.login;
-import static com.sun.org.apache.xerces.internal.util.DOMUtil.setVisible;
-import static com.sun.org.apache.xerces.internal.util.DOMUtil.setVisible;
-import static com.sun.org.apache.xerces.internal.util.DOMUtil.setVisible;
 import java.awt.Dimension;
 import java.awt.Robot;
 import java.awt.Toolkit;
-import static com.sun.org.apache.xerces.internal.util.DOMUtil.setVisible;
-import static com.sun.org.apache.xerces.internal.util.DOMUtil.setVisible;
-import static com.sun.org.apache.xerces.internal.util.DOMUtil.setVisible;
-import static com.sun.org.apache.xerces.internal.util.DOMUtil.setVisible;
-import static com.sun.org.apache.xerces.internal.util.DOMUtil.setVisible;
-import static com.sun.org.apache.xerces.internal.util.DOMUtil.setVisible;
-import static com.sun.org.apache.xerces.internal.util.DOMUtil.setVisible;
-import static com.sun.org.apache.xerces.internal.util.DOMUtil.setVisible;
-import static com.sun.org.apache.xerces.internal.util.DOMUtil.setVisible;
-import static com.sun.org.apache.xerces.internal.util.DOMUtil.setVisible;
-import static com.sun.org.apache.xerces.internal.util.DOMUtil.setVisible;
-import static com.sun.org.apache.xerces.internal.util.DOMUtil.setVisible;
+import javax.swing.JLabel;
 
 /**
  *
@@ -54,8 +35,10 @@ public class NewUser extends JFrame {
    
   JButton create;
   JPanel newUserPanel;
-  JTextField username;
-  JTextField password;
+  JTextField userText;
+  JTextField passText;
+  JLabel username;
+  JLabel password;
   //JTextField classification;
   ArrayList<User> users;
   
@@ -79,8 +62,10 @@ public class NewUser extends JFrame {
 
     create = new JButton("Create");
     newUserPanel = new JPanel();
-    username = new JTextField(15);
-    password = new JPasswordField(15);
+    userText = new JTextField(15);
+    passText = new JPasswordField(15);
+    username = new JLabel("Username: ");
+    password = new JLabel("Password: ");
 
 
     setSize(300, 200);
@@ -88,11 +73,15 @@ public class NewUser extends JFrame {
     newUserPanel.setLayout (null); 
 
 
-    username.setBounds(70, 30, 150, 20);
-    password.setBounds(70, 65, 150, 20);
-    create.setBounds(110, 100, 80, 20);
+    create.setBounds(110, 110, 80, 20);
+    userText.setBounds(110, 20, 150, 20);
+    passText.setBounds(110, 55, 150, 20);
+    username.setBounds(30, 18, 80, 20);
+    password.setBounds(30, 53, 80, 20);
 
     newUserPanel.add(create);
+    newUserPanel.add(userText);
+    newUserPanel.add(passText);
     newUserPanel.add(username);
     newUserPanel.add(password);
 
@@ -100,16 +89,19 @@ public class NewUser extends JFrame {
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setVisible(true);
 
-    File check = new File("userinfo.txt");
+    File check = new File("C:/Users/christian/Documents/NetBeansProjects/CSE-J1613/RobbieRobotShop/test");
     if (check.exists()) {
-
+        if(users == null)
+            users = new ArrayList<>();
       //Checks if the file exists. will not add anything if the file does exist.
     } else {
       try {
-        File fileInstance = new File("userinfo.txt"); // write MenuArray to ObjectOutputStream
+        File fileInstance = new File("C:/Users/christian/Documents/NetBeansProjects/CSE-J1613/RobbieRobotShop/test"); // write MenuArray to ObjectOutputStream
         fis = new FileInputStream(fileInstance);
         ois = new ObjectInputStream(fis);   
         users = (ArrayList<User>)ois.readObject();
+        if(users == null)
+            users = new ArrayList<>();
       }
       catch(Exception e) {
         e.printStackTrace();
@@ -122,13 +114,13 @@ public class NewUser extends JFrame {
     create.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         try {        
-          File fileInstance = new File("userinfo.txt");
-          String printedUsername = username.getText();
-          String printedPassword = password.getText();
+          File fileInstance = new File("C:/Users/christian/Documents/NetBeansProjects/CSE-J1613/RobbieRobotShop/test");
+          String printedUsername = userText.getText();
+          String printedPassword = passText.getText();
           
-          for(User user: users)
+          for(int i = 0; i < users.size(); i++)
           {
-              if(printedUsername.equals(user.getUsername()))
+              if(printedUsername.equals(users.get(i).getUsername()))
               {
                   isInUse = true;
                   JOptionPane sorry = new JOptionPane();
