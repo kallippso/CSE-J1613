@@ -9,21 +9,32 @@ package Shop;
  *
  * @author christian
  */
+
+import java.util.ArrayList;
+
 public class RobotModel {
     private String name;
+<<<<<<< HEAD
     int modelNumber;
     double price;
     RobotPart[] robotParts;
     int numRobotParts;
+=======
+    private int modelNumber;
+    private double price;
+    private ArrayList<RobotPart> robotParts;
+    private int numRobots;
+>>>>>>> origin/master
     
     public RobotModel()
     {
         name = String.format("Robot%4d", numRobotParts++);
         price = 200;
         modelNumber = 1;
+        robotParts = new ArrayList<>();
     }
     
-    public RobotModel(String name, int modelNumber, double price, RobotPart[] robotParts)
+    public RobotModel(String name, int modelNumber, double price, ArrayList<RobotPart> robotParts)
     {
         this.name = name;
         this.modelNumber = modelNumber;
@@ -32,6 +43,7 @@ public class RobotModel {
         numRobotParts++;
     }
     
+<<<<<<< HEAD
     public String getName()
     {
         return name;
@@ -76,6 +88,23 @@ public class RobotModel {
     {
         this.robotParts = robotParts;
     }
+=======
+    public RobotModel(String name, int modelNumber, double price, Head head, Locomotor motor, Torso body, Battery b1, Arm arm1)
+    {
+        this.name = name;                                   // Constructor for a robot with 1 battery and 1 arm
+        this.modelNumber = modelNumber;
+        this.price = price;
+        robotParts = new ArrayList<>();
+        robotParts.add(head);
+        robotParts.add(motor);
+        robotParts.add(body);
+        robotParts.add(b1);
+        robotParts.add(arm1);
+        numRobots++;
+    }
+    
+    // This is missing RobotPart[] - Ody
+>>>>>>> origin/master
     
     public double componentCost()
     {

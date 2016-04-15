@@ -1,5 +1,5 @@
 
-package j1613;          // Change to whatever package name will be
+package Shop;          // Change to whatever package name will be
 
 /**
  * Name: John Ngo
