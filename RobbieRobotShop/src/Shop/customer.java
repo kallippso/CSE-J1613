@@ -3,33 +3,44 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package customer;
+package Shop;
 
+import java.util.ArrayList;
 
 /**
 
  */
-public class customer;
+public class Customer
 {
    
     private String name;
     private int customerNumber;
     private double wallet;
-    private int orders; 
+<<<<<<< HEAD
+    private Order[] orders; 
+=======
+    private ArrayList<Order> orders; 
+>>>>>>> origin/master
     
     
-    public customer()
+    public Customer()
     {
-        name;
-        customernumber;
-        wallet;
-        orders; 
+<<<<<<< HEAD
+        name = null;
+        customernumber = -1;
+        wallet = -1;
+        orders = null;
     }
     
-    public customer(String name, int customerNumber, double wallet, int orders)
+    public customer(String name, int customerNumber, double wallet, Orders[] orders)
+=======
+    }
+    
+    public Customer(String name, int customerNumber, double wallet, ArrayList<Order> orders)
+>>>>>>> origin/master
     {
         this.name = name;
-        this.numer = number;
+        this.customerNumber = customerNumber;
         this.wallet = wallet;
         this.orders = orders;
     }
@@ -49,7 +60,7 @@ public class customer;
         return wallet;
     }
     
-    public order getorders()
+    public ArrayList<Order> getOrder()
     {
         return orders;
     }
@@ -61,18 +72,18 @@ public class customer;
         this.name = name;
     }
     
-    protected void setcustomerNumber(int customerNumber)
+    protected void setCustomerNumber(int customerNumber)
     {
-        this.partNumber = partNumber;
+        this.customerNumber = customerNumber;
     }
     
-    protected void setwallet(String description)
+    protected void setWallet(double wallet)
     {
-        this.description = description;
+        this.wallet = wallet;
     }
     
-    protected void setorders(order()orders)
+    protected void setOrders(ArrayList<Order> orders)
     {
-        this.componentType = componentType;
+        this.orders = orders;
     }
 }

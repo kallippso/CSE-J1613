@@ -45,6 +45,15 @@ public class Locomotor extends RobotPart{
         this.maxSpeed = speed;
     }
     
+    public Locomotor(String name, ComponentType componentType, double weight, double cost, String description, RenderedImage image)
+    {
+        this.name = name;
+        this.weight = weight;
+        this.cost = cost;
+        this.description = description;
+        this.image = image;
+    }
+    
     public Locomotor(String name, ComponentType componentType, double weight, double cost, String description, RenderedImage image, int speed)
     {
         this.name = name;
