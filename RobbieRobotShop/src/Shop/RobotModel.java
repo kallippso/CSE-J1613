@@ -17,7 +17,6 @@ public class RobotModel {
     private int modelNumber;
     private double price;
     private ArrayList<RobotPart> robotParts;
-    private int numRobotParts;
     private static int numRobots;
     
     public RobotModel()

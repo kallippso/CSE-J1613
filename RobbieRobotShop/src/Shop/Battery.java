@@ -192,10 +192,4 @@ public class Battery extends RobotPart{
     {
         this.image = image;
     }
-    
-    public static void main(String[] args)
-    {
-        Battery testBat = new Battery();
-        
-    }
 }
