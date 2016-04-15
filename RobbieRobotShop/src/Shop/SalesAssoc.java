@@ -63,5 +63,10 @@ public class SalesAssoc
     {
         orders.add(order);
     }
+    
+    public static void main(String [] args)
+    {
+        SalesAssoc test = new SalesAssoc(); 
+    }
 }
     

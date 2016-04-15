@@ -192,7 +192,12 @@ public class Shop {
     }
      
     public static void main(String[] args) {
-
+        Shop testShop = new Shop();
+        Customer test = new Customer();
+        SalesAssoc sales = new SalesAssoc();
+        testShop.placeOrder(1, new Date("1/1/2016"), test, sales, new RobotModel(), new Status(1));
+        testShop.placeOrder(2, new Date("2/2/2016"), test, sales, new RobotModel(), new Status(2));
+        testShop.viewOrders();
     }
 }
     

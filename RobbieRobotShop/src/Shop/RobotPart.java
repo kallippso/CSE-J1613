@@ -21,6 +21,7 @@ public abstract class RobotPart {
     
     public RobotPart()
     {
+        name = "null";
     }
     
     public String getName()
@@ -93,7 +94,5 @@ public abstract class RobotPart {
     {
         this.image = image;
     }
-    
-    
-    
+
 }

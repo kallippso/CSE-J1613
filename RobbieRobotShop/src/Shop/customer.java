@@ -101,20 +101,35 @@ public class Customer
     
     public void viewBill()
     {
-    int i = 0;
-    double total = 0;
-    while(i < orders.size())
-    {
-     System.out.println("\nCost of Order " + orders.get(i).getOrderNumber() + ": " + orders.get(i).totalPrice());
-     total +=  orders.get(i).totalPrice();
-     i++;
+        int i = 0;
+        double total = 0;
+        while(i < orders.size())
+        {
+            System.out.println("\nCost of Order " + orders.get(i).getOrderNumber() + ": " + orders.get(i).totalPrice());
+            total +=  orders.get(i).totalPrice();
+            i++;
+        }
+        System.out.println("Total Bill: " + total);
     }
-     System.out.println("Total Bill: " + total);
+    
+    public void viewOrders()
+    {
+        int i = 0;
+        while(i < orders.size())
+        {
+            System.out.println(orders.get(i));
+            i++;
+        }
     }
     
     public static void main(String [] args)
     {
-        Customer test = new Customer(); 
+        Customer test = new Customer();
+        SalesAssoc sales = new SalesAssoc();
+        Order testOrder = new Order(1, new Date("1/1/2016"), test, sales, new RobotModel(), 1);
+        System.out.println(testOrder);
+        test.addOrder(testOrder);
+        test.viewOrders();
         test.viewBill();
     }
 }

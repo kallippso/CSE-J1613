@@ -117,9 +117,10 @@ public class Arm extends RobotPart{
     
     //insert method to override from abstract class RobotPart here...
     
-    public static void main()
+    public static void main(String[] args)
     {
         Arm testArm = new Arm();
+        System.out.println(testArm.getDescription());
         
     }
 }

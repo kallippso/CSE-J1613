@@ -31,4 +31,11 @@ public class ComponentType{
     {
         this.typeName = typeName;
     }
+    
+    public static void main(String[] args)
+    {
+        String s = "this better work";
+        ComponentType test = new ComponentType("Test", s.getClass());
+        System.out.println(test.getTypeName() + " " + test.getClassName());
+    }
 }
