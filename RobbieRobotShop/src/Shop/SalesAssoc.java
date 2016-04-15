@@ -5,19 +5,38 @@
  */
 package Shop;
 
+import java.util.ArrayList;
+
 public class SalesAssoc
 {
    
     private String name;
     private int employeeNumber;
-    private Order orders; 
+    private ArrayList<Order> orders; 
     
     
     public SalesAssoc()
     {
+        name = "test";
+        employeeNumber = -1;
+        orders = new ArrayList<>();
     }
     
-    public SalesAssoc(String name, int employeeNumber, Order orders)
+    public SalesAssoc(String name)
+    {
+        this.name = name;
+        employeeNumber = 0;
+        orders = new ArrayList<>();
+    }
+    
+    public SalesAssoc(String name, int employeeNumber)
+    {
+        this.name = name;
+        this.employeeNumber = employeeNumber;
+        orders = new ArrayList<>();
+    }   
+    
+    public SalesAssoc(String name, int employeeNumber, ArrayList<Order> orders)
     {
         this.name = name;
         this.employeeNumber = employeeNumber;
@@ -35,9 +54,14 @@ public class SalesAssoc
         return employeeNumber;
     }
     
-    public Order getOrders()
+    public ArrayList<Order> getOrders()
     {
         return orders;
+    }
+    
+    public void addOrder(Order order)
+    {
+        orders.add(order);
     }
 }
     

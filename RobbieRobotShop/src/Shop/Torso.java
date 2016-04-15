@@ -58,6 +58,21 @@ public class Torso extends RobotPart{
         this.componentType = componentType;
     }
     
+    public Torso(String name, int partNumber, double weight, double cost, String description, int value)
+    {
+        this.name = name;
+        this.partNumber = partNumber;
+        this.weight = weight;
+        this.cost = cost;
+        this.description = description;
+        this.image = null;
+        batteryCompartments = value;
+        head = null;
+        arms = new Arm[2];
+        locomotor = null;
+        batteries = new Battery[value];
+    }
+    
     public String getName()
     {
         return name;

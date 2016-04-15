@@ -96,10 +96,10 @@ public class Shop {
        switch(type)
        {
            case "torso": //add to shop's data structure
-               torsoList.add(new Torso(name, num, type, weight, cost, description, value));
+               torsoList.add(new Torso(name, num, weight, cost, description, value));
                break;
            case "locomotor"://add to shop's data structure
-               locomotorList.add(new Locomotor(name, num, type, weight, cost, description, value));
+               locomotorList.add(new Locomotor(name, num, weight, cost, description, value));
                break;
            default:
                System.out.println("Component name not recognized.");
@@ -112,7 +112,7 @@ public class Shop {
         switch(type)
        {
            case "battery": //add to shop's data structure
-               batteryList.add(new Battery(name, num, type, weight, cost, description, energy, power));;
+               batteryList.add(new Battery(name, num, weight, cost, description, energy, power));
                break;
            default:
                System.out.println("Component name not recognized.");
@@ -164,11 +164,15 @@ public class Shop {
     
     public void placeOrder(int num, Date date, Customer cust, SalesAssoc sales, RobotModel model, Status status)
     {   
-        orders.add(new Order(num, date, cust, sales, model, status));
+        Order order = new Order(num, date, cust, sales, model, status);
+        orders.add(order);
+        cust.addOrder(order);
+        sales.addOrder(order);
     }
     
     public void viewOrders()
     {
+        System.out.println("Orders:");
         int i = 0;
         while(i < orders.size())
         {

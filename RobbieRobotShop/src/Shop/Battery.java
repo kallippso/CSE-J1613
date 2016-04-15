@@ -36,18 +36,33 @@ public class Battery extends RobotPart{
     public Battery(String name, ComponentType componentType, double weight, double cost, String description, RenderedImage image)
     {
         this.name = name;
+        this.partNumber = 0;
         this.componentType = componentType;
         this.weight = weight;
         this.cost = cost;
         this.description = description;
         this.image = image;
-        this.energy = energy;
-        this.maxPower = maxPower;
+        this.energy = 0;
+        this.maxPower = 0;
     }
     
-    public Battery(String name, ComponentType componentType, double weight, double cost, String description, double energy, double maxPower)
+    public Battery(String name, int num, ComponentType componentType, double weight, double cost, String description, RenderedImage image)
     {
         this.name = name;
+        this.partNumber = num;
+        this.componentType = componentType;
+        this.weight = weight;
+        this.cost = cost;
+        this.description = description;
+        this.image = image;
+        this.energy = 0;
+        this.maxPower = 0;
+    }
+    
+    public Battery(String name, int num, ComponentType componentType, double weight, double cost, String description, double energy, double maxPower)
+    {
+        this.name = name;
+        this.partNumber = num;
         this.weight = weight;
         this.cost = cost;
         this.description = description;
@@ -56,15 +71,40 @@ public class Battery extends RobotPart{
         this.maxPower = maxPower;
     }
     
-    public Battery(String name, ComponentType componentType, double weight, double cost, String description, RenderedImage image, double energy, double maxPower)
+    public Battery(String name, int num, ComponentType componentType, double weight, double cost, String description, RenderedImage image, double energy, double maxPower)
     {
         this.name = name;
+        this.partNumber = num;
         this.weight = weight;
         this.cost = cost;
         this.description = description;
         this.image = image;
         this.energy = energy;
         this.maxPower = maxPower;
+    }
+    
+    public Battery(String name, int num, String type, double weight, double cost, String description, double energy, double power)
+    {
+        this.name = name;
+        this.partNumber = num;
+        this.weight = weight;
+        this.cost = cost;
+        this.description = description;
+        this.image = null;
+        this.energy = energy;
+        this.maxPower = maxPower;
+    }
+    
+    public Battery(String name, int partNumber, double weight, double cost, String description, double energy, double power)
+    {
+        this.name = name;
+        this.partNumber = partNumber;
+        this.weight = weight;
+        this.cost = cost;
+        this.description = description;
+        this.image = null;
+        this.energy = energy;
+        this.maxPower = power;
     }
     
     public double getEnergy(){

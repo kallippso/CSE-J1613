@@ -43,6 +43,17 @@ public class Head extends RobotPart
         this.componentType = componentType;
     }
     
+    public Head(String name, int partNumber, double weight, double cost, String description)
+    {
+        this.name = name;
+        this.partNumber = partNumber;
+        this.componentType = new ComponentType("Head", this.getClass());
+        this.weight = weight;
+        this.cost = cost;
+        this.description = description;
+        this.image = null;
+    }
+    
     public String getName()
     {
         return name;

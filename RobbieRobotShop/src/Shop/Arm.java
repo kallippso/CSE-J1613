@@ -43,7 +43,7 @@ public class Arm extends RobotPart{
         this.weight = weight;
         this.cost = cost;
         this.description = description;
-        image = null;
+        this.image = null;
     }
     
     public Arm(String name, ComponentType type, double weight, double cost, String description, RenderedImage image){
