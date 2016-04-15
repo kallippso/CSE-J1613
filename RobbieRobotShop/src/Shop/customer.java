@@ -19,9 +19,17 @@ public class Customer
     private ArrayList<Order> orders; 
     
     
+   
     public Customer()
     {
+        name = "test";
+        customerNumber = -1;
+        wallet = 0;
+        orders = new ArrayList<>();
     }
+        
+        
+    
     
     public Customer(String name, int customerNumber, double wallet, ArrayList<Order> orders)
     {
@@ -77,12 +85,18 @@ public class Customer
     {
     int i = 0;
     double total = 0;
-    while(orders.get(i) != null)
+    while(i < orders.size())
     {
      System.out.println("\nCost of Order " + orders.get(i).getOrderNumber() + ": " + orders.get(i).totalPrice());
      total +=  orders.get(i).totalPrice();
      i++;
     }
      System.out.println("Total Bill: " + total);
+    }
+    
+    public static void main(String [] args)
+    {
+        Customer test = new Customer(); 
+        test.viewBill();
     }
 }
