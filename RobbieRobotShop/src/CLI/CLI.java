@@ -40,7 +40,7 @@ public class CLI {
                     createMenu();
                     break;
                 case 2:
-                    System.out.println("This option has not been implemented in the current build.");
+                    reportMenu();
                     break;
                 case 3:
                     System.out.println("This option has not been implemented in the current build.");
@@ -105,8 +105,7 @@ public class CLI {
                 case 6:
                     break;
             }
-        }
-        
+        }  
     }
     
     private void createRobotPart()
@@ -489,6 +488,57 @@ public class CLI {
         num = keyboard.nextInt();
         //robotShop.newSalesAssoc(name, num);
         System.out.println("\nA sales associate of name " + name + " and employee number " + num + " has been added to the shop.");
+    }
+    
+    private void reportMenu(){
+        int choice3;
+        choice3 = 0;
+        while(choice3 != 6)
+        {
+            System.out.println("\n ===== Create Menu =====");
+            System.out.println("  1) Order");
+            System.out.println("  2) Customers");
+            System.out.println("  3) Sales Associates");
+            System.out.println("  4) Robot Models");
+            System.out.println("  5) Robot Parts");
+            System.out.println("  6) Return to Main Menu");
+            System.out.println(" =======================");
+            System.out.println(" Select an option by inputting the corresponding number.");
+            System.out.print(" > ");
+            choice3 = keyboard.nextInt();
+            while(choice3 > 6 || choice3 < 1)
+            {
+                System.out.println("\n The number inputted does not exist within the range of the options.");
+                System.out.println(" Please input a number between 1-6.");
+                System.out.print(" > ");
+                choice3 = keyboard.nextInt();
+            }
+            switch(choice3)
+            {
+                case 1:
+                    //viewOrders();
+                    break;
+                case 2:
+                    //viewCustomers();
+                    break;
+                case 3:
+                    //viewSalesAssocs();
+                    break;
+                case 4:
+                    //viewRobotModels();
+                    break;
+                case 5:
+                    //viewRobotParts();
+                    break;
+                case 6:
+                    break;
+            }
+        }  
+    }
+    
+    public void viewOrders()
+    {
+        robotShop.viewOrders();
     }
     
     public static void main(String [] args)
