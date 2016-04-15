@@ -72,4 +72,17 @@ public class Customer
     {
         this.orders = orders;
     }
+    
+    public void viewBill()
+    {
+    int i = 0;
+    double total = 0;
+    while(orders.get(i) != null)
+    {
+     System.out.println("\nCost of Order " + orders.get(i).getOrderNumber() + ": " + orders.get(i).totalPrice());
+     total +=  orders.get(i).totalPrice();
+     i++;
+    }
+     System.out.println("Total Bill: " + total);
+    }
 }
