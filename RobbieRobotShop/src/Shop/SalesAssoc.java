@@ -13,19 +13,19 @@ public class SalesAssoc
     private String name;
     private int employeeNumber;
     private ArrayList<Order> orders; 
-    
+    private static int numEmployees;
     
     public SalesAssoc()
     {
         name = "test";
-        employeeNumber = -1;
+        employeeNumber = numEmployees++;
         orders = new ArrayList<>();
     }
     
     public SalesAssoc(String name)
     {
         this.name = name;
-        employeeNumber = 0;
+        employeeNumber = numEmployees++;
         orders = new ArrayList<>();
     }
     
@@ -34,6 +34,7 @@ public class SalesAssoc
         this.name = name;
         this.employeeNumber = employeeNumber;
         orders = new ArrayList<>();
+        numEmployees++;
     }   
     
     public SalesAssoc(String name, int employeeNumber, ArrayList<Order> orders)
@@ -41,8 +42,15 @@ public class SalesAssoc
         this.name = name;
         this.employeeNumber = employeeNumber;
         this.orders = orders;
+        numEmployees++;
     }
     
+    public SalesAssoc(String name, ArrayList<Order> orders)
+    {
+        this.name = name;
+        this.employeeNumber = numEmployees++;
+        this.orders = orders;
+    }
 
     public String getName()
     {

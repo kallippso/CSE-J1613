@@ -21,6 +21,7 @@ public class Head extends RobotPart
     private double cost;
     private String description;
     private RenderedImage image;
+    private static int numHeads2 = 0;
     
     public Head()
     {
@@ -41,12 +42,25 @@ public class Head extends RobotPart
         this.description = description;
         this.image = image;
         this.componentType = componentType;
+        numHeads2++;
     }
     
     public Head(String name, int partNumber, double weight, double cost, String description)
     {
         this.name = name;
         this.partNumber = partNumber;
+        this.componentType = new ComponentType("Head", this.getClass());
+        this.weight = weight;
+        this.cost = cost;
+        this.description = description;
+        this.image = null;
+        numHeads2++;
+    }
+    
+    public Head(String name, double weight, double cost, String description)
+    {
+        this.name = name;
+        this.partNumber = numHeads2++;
         this.componentType = new ComponentType("Head", this.getClass());
         this.weight = weight;
         this.cost = cost;

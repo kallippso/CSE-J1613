@@ -18,13 +18,13 @@ public class RobotModel {
     private double price;
     private ArrayList<RobotPart> robotParts;
     private int numRobotParts;
-    private static int numRobots;
+    private static int numRobots = 0;
     
     public RobotModel()
     {
-        name = String.format("Robot%4d", numRobots++);
+        name = String.format("Robot%4d", numRobots);
         price = 200;
-        modelNumber = 1;
+        modelNumber = numRobots++;
         robotParts = new ArrayList<>();
     }
     
@@ -37,10 +37,10 @@ public class RobotModel {
         numRobots++;
     }
     
-    public RobotModel(String name, int modelNumber, double price, Head head, Locomotor motor, Torso body, Battery b1, Arm arm1)
+    public RobotModel(String name, double price, Head head, Locomotor motor, Torso body, Battery b1, Arm arm1)
     {
         this.name = name;                                   // Constructor for a robot with 1 battery and 1 arm
-        this.modelNumber = modelNumber;
+        this.modelNumber = numRobots++;
         this.price = price;
         robotParts = new ArrayList<>();
         robotParts.add(head);
@@ -48,13 +48,12 @@ public class RobotModel {
         robotParts.add(body);
         robotParts.add(b1);
         robotParts.add(arm1);
-        numRobots++;
     }
     
-    public RobotModel(String name, int modelNumber, double price, Head head, Locomotor motor, Torso body, Battery b1, Arm arm1, Arm arm2)
+    public RobotModel(String name, double price, Head head, Locomotor motor, Torso body, Battery b1, Arm arm1, Arm arm2)
     {
         this.name = name;                                   // Constructor for a robot with 1 battery and 2 arm
-        this.modelNumber = modelNumber;
+        this.modelNumber = numRobots++;
         this.price = price;
         robotParts = new ArrayList<>();
         robotParts.add(head);
@@ -63,13 +62,12 @@ public class RobotModel {
         robotParts.add(b1);
         robotParts.add(arm1);
         robotParts.add(arm2);
-        numRobots++;
     }
     
-    public RobotModel(String name, int modelNumber, double price, Head head, Locomotor motor, Torso body, Battery b1, Battery b2, Arm arm1)
+    public RobotModel(String name, double price, Head head, Locomotor motor, Torso body, Battery b1, Battery b2, Arm arm1)
     {
         this.name = name;                                   // Constructor for a robot with 2 battery and 1 arm
-        this.modelNumber = modelNumber;
+        this.modelNumber = numRobots++;
         this.price = price;
         robotParts = new ArrayList<>();
         robotParts.add(head);
@@ -78,13 +76,12 @@ public class RobotModel {
         robotParts.add(b1);
         robotParts.add(b2);
         robotParts.add(arm1);
-        numRobots++;
     }
     
-    public RobotModel(String name, int modelNumber, double price, Head head, Locomotor motor, Torso body, Battery b1, Battery b2, Arm arm1, Arm arm2)
+    public RobotModel(String name, double price, Head head, Locomotor motor, Torso body, Battery b1, Battery b2, Arm arm1, Arm arm2)
     {
         this.name = name;                                   // Constructor for a robot with 2 battery and 2 arm
-        this.modelNumber = modelNumber;
+        this.modelNumber = numRobots++;
         this.price = price;
         robotParts = new ArrayList<>();
         robotParts.add(head);
@@ -94,13 +91,12 @@ public class RobotModel {
         robotParts.add(b2);
         robotParts.add(arm1);
         robotParts.add(arm2);
-        numRobots++;
     }
     
-    public RobotModel(String name, int modelNumber, double price, Head head, Locomotor motor, Torso body, Battery b1, Battery b2, Battery b3, Arm arm1)
+    public RobotModel(String name, double price, Head head, Locomotor motor, Torso body, Battery b1, Battery b2, Battery b3, Arm arm1)
     {
         this.name = name;                                   // Constructor for a robot with 3 battery and 1 arm
-        this.modelNumber = modelNumber;
+        this.modelNumber = numRobots++;
         this.price = price;
         robotParts = new ArrayList<>();
         robotParts.add(head);
@@ -110,13 +106,12 @@ public class RobotModel {
         robotParts.add(b2);
         robotParts.add(b3);
         robotParts.add(arm1);
-        numRobots++;
     }
     
-    public RobotModel(String name, int modelNumber, double price, Head head, Locomotor motor, Torso body, Battery b1, Battery b2, Battery b3, Arm arm1, Arm arm2)
+    public RobotModel(String name, double price, Head head, Locomotor motor, Torso body, Battery b1, Battery b2, Battery b3, Arm arm1, Arm arm2)
     {
         this.name = name;                                   // Constructor for a robot with 3 battery and 2 arm
-        this.modelNumber = modelNumber;
+        this.modelNumber = numRobots++;
         this.price = price;
         robotParts = new ArrayList<>();
         robotParts.add(head);
@@ -127,7 +122,6 @@ public class RobotModel {
         robotParts.add(b3);
         robotParts.add(arm1);
         robotParts.add(arm2);
-        numRobots++;
     }
     
     // This is missing RobotPart[] - Ody

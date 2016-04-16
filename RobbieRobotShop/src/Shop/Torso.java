@@ -26,6 +26,7 @@ public class Torso extends RobotPart{
     private double cost;
     private String description;
     private RenderedImage image;
+    private static int numTorsos2 = 0;
     
     public Torso()
     {
@@ -56,12 +57,29 @@ public class Torso extends RobotPart{
         this.description = description;
         this.image = image;
         this.componentType = componentType;
+        numTorsos2++;
     }
     
     public Torso(String name, int partNumber, double weight, double cost, String description, int value)
     {
         this.name = name;
         this.partNumber = partNumber;
+        this.weight = weight;
+        this.cost = cost;
+        this.description = description;
+        this.image = null;
+        batteryCompartments = value;
+        head = null;
+        arms = new Arm[2];
+        locomotor = null;
+        batteries = new Battery[value];
+        numTorsos2++;
+    }
+    
+    public Torso(String name, double weight, double cost, String description, int value)
+    {
+        this.name = name;
+        this.partNumber = numTorsos2++;
         this.weight = weight;
         this.cost = cost;
         this.description = description;
@@ -108,6 +126,10 @@ public class Torso extends RobotPart{
         return image;
     }
     
+    public int getBatteryCompartments()
+    {
+        return batteryCompartments;
+    }
     
     protected void setName(String name)
     {

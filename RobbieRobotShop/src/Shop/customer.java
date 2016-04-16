@@ -16,14 +16,14 @@ public class Customer
     private String name;
     private int customerNumber;
     private double wallet;
-    private ArrayList<Order> orders; 
-    
-    
+    private ArrayList<Order> orders;
+    private static int numCustomers = 0;
+
    
     public Customer()
     {
         name = "test";
-        customerNumber = -1;
+        customerNumber = numCustomers++;
         wallet = 0;
         orders = new ArrayList<>();
     }
@@ -31,7 +31,7 @@ public class Customer
     public Customer(String name)
     {
         this.name = name;
-        customerNumber = 0;
+        customerNumber = numCustomers++;
         wallet = 0;
         orders = new ArrayList<>();
     }
@@ -42,12 +42,22 @@ public class Customer
         this.customerNumber = customerNumber;
         wallet = 0;
         orders = new ArrayList<>();
+        numCustomers++;
     }   
     
     public Customer(String name, int customerNumber, double wallet, ArrayList<Order> orders)
     {
         this.name = name;
         this.customerNumber = customerNumber;
+        this.wallet = wallet;
+        this.orders = orders;
+        numCustomers++;
+    }
+    
+    public Customer(String name, double wallet, ArrayList<Order> orders)
+    {
+        this.name = name;
+        this.customerNumber = numCustomers++;
         this.wallet = wallet;
         this.orders = orders;
     }
@@ -70,9 +80,7 @@ public class Customer
     public ArrayList<Order> getOrder()
     {
         return orders;
-    }
- 
-    
+    }  
     
     protected void setName(String name)
     {
