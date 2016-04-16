@@ -16,11 +16,14 @@ public class GUITest {
     
     public static void main(String[] args)
     {
+        LoginFrame test = new LoginFrame();
+        test.checkIdentity();
+        /*JFrame currentFrame = null;
         JFrame testFrame = new JFrame("Shop Creation/Management Tool");
         testFrame.setSize(600, 480);
         testFrame.setLocation(100,100);
         testFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         testFrame.setJMenuBar(new GUIToolbar().createSalesToolbar());
-        testFrame.setVisible(true);
+        testFrame.setVisible(true);*/
     }
 }

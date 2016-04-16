@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Shop;
+
 import java.awt.image.RenderedImage;
 import java.util.ArrayList;
 
@@ -120,29 +121,34 @@ public class Shop {
     }
     
         // create RobotModel methods
-    public void createRobotModel(Head head, Locomotor motor, Torso body, Battery b1, Arm arm1)
+    public void createRobotModel(String name, double price, int num, Head head, Locomotor motor, Torso body, Battery b1, Arm arm1)
     {
-        robotModels.add(new RobotModel(head, motor, body, b1, arm1));
+        robotModels.add(new RobotModel(name, num, price, head, motor, body, b1, arm1));
     }
-    public void createRobotModel(Head head, Locomotor motor, Torso body, Battery b1, Arm arm1, Arm arm2)
+    
+    public void createRobotModel(String name, double price, int num, Head head, Locomotor motor, Torso body, Battery b1, Arm arm1, Arm arm2)
     {
-        robotModels.add(new RobotModel(head, motor, body, b1, arm1, arm2));
+        robotModels.add(new RobotModel(name, num, price, head, motor, body, b1, arm1, arm2));
     }
-    public void createRobotModel(Head head, Locomotor motor, Torso body, Battery b1, Battery b2, Arm arm1)
+    
+    public void createRobotModel(String name, double price, int num, Head head, Locomotor motor, Torso body, Battery b1, Battery b2, Arm arm1)
     {
-        robotModels.add(new RobotModel(head, motor, body, b1, b2, arm1));
+        robotModels.add(new RobotModel(name, num, price, head, motor, body, b1, b2, arm1));
     }
-    public void createRobotModel(Head head, Locomotor motor, Torso body, Battery b1, Battery b2, Arm arm1, Arm arm2)
+    
+    public void createRobotModel(String name, double price, int num, Head head, Locomotor motor, Torso body, Battery b1, Battery b2, Arm arm1, Arm arm2)
     {
-        robotModels.add(new RobotModel(head, motor, body, b1, b2, arm1, arm2));
+        robotModels.add(new RobotModel(name, num, price, head, motor, body, b1, b2, arm1, arm2));
     }
-    public void createRobotModel(Head head, Locomotor motor, Torso body, Battery b1, Battery b2, Battery b3, Arm arm1)
+    
+    public void createRobotModel(String name, double price, int num, Head head, Locomotor motor, Torso body, Battery b1, Battery b2, Battery b3, Arm arm1)
     {
-        robotModels.add(new RobotModel(head, motor, body, b1, b2, b3, arm1));
+        robotModels.add(new RobotModel(name, num, price, head, motor, body, b1, b2, b3, arm1));
     }
-    public void createRobotModel(Head head, Locomotor motor, Torso body, Battery b1,Battery b2, Battery b3, Arm arm1, Arm arm2)
+    
+    public void createRobotModel(String name, double price, int num, Head head, Locomotor motor, Torso body, Battery b1,Battery b2, Battery b3, Arm arm1, Arm arm2)
     {
-        robotModels.add(new RobotModel(head, motor, body, b1, b2, b3, arm1, arm2));
+        robotModels.add(new RobotModel(name, num, price, head, motor, body, b1, b2, b3, arm1, arm2));
     }
 
         // other methods
@@ -164,7 +170,7 @@ public class Shop {
     public void viewOrders()
     {
         int i = 0;
-        while(orders.get(i) != null)
+        while(i < orders.size())
         {
             System.out.println(orders.get(i));
             i++;
@@ -185,3 +191,6 @@ public class Shop {
 
     }
 }
+    
+    
+    
