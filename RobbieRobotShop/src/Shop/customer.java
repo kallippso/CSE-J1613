@@ -3,44 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Shop;
+package customer;
 
-import java.util.ArrayList;
 
 /**
 
  */
-public class Customer
+public class customer;
 {
    
     private String name;
     private int customerNumber;
     private double wallet;
-<<<<<<< HEAD
-    private Order[] orders; 
-=======
-    private ArrayList<Order> orders; 
->>>>>>> origin/master
+    private int orders; 
     
     
-    public Customer()
+    public customer()
     {
-<<<<<<< HEAD
-        name = null;
-        customernumber = -1;
-        wallet = -1;
-        orders = null;
+        name;
+        customernumber;
+        wallet;
+        orders; 
     }
     
-    public customer(String name, int customerNumber, double wallet, Orders[] orders)
-=======
-    }
-    
-    public Customer(String name, int customerNumber, double wallet, ArrayList<Order> orders)
->>>>>>> origin/master
+    public customer(String name, int customerNumber, double wallet, int orders)
     {
         this.name = name;
-        this.customerNumber = customerNumber;
+        this.numer = number;
         this.wallet = wallet;
         this.orders = orders;
     }
@@ -60,7 +49,7 @@ public class Customer
         return wallet;
     }
     
-    public ArrayList<Order> getOrder()
+    public order getorders()
     {
         return orders;
     }
@@ -72,18 +61,18 @@ public class Customer
         this.name = name;
     }
     
-    protected void setCustomerNumber(int customerNumber)
+    protected void setcustomerNumber(int customerNumber)
     {
-        this.customerNumber = customerNumber;
+        this.partNumber = partNumber;
     }
     
-    protected void setWallet(double wallet)
+    protected void setwallet(String description)
     {
-        this.wallet = wallet;
+        this.description = description;
     }
     
-    protected void setOrders(ArrayList<Order> orders)
+    protected void setorders(order()orders)
     {
-        this.orders = orders;
+        this.componentType = componentType;
     }
 }

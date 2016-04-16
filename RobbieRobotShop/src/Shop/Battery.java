@@ -33,14 +33,13 @@ public class Battery extends RobotPart{
         this.maxPower = maxPower;
     }
     
-    public Battery(String name, ComponentType componentType, double weight, double cost, String description, RenderedImage image)
+    public Battery(String name, double weight, double cost, String description, double energy, double maxPower)
     {
         this.name = name;
-        this.componentType = componentType;
         this.weight = weight;
         this.cost = cost;
         this.description = description;
-        this.image = image;
+        this.image = null;
         this.energy = energy;
         this.maxPower = maxPower;
     }

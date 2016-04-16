@@ -5,22 +5,26 @@
  */
 package Shop;
 
-public class SalesAssoc
+ */
+public class SalesAssoc;
 {
    
     private String name;
     private int employeeNumber;
-    private Order orders; 
+    private int orders; 
     
     
-    public SalesAssoc()
+    public employee()
     {
+        name;
+        employeenumber;
+        orders; 
     }
     
-    public SalesAssoc(String name, int employeeNumber, Order orders)
+    public employee(String name, int employeeNumber, int orders)
     {
         this.name = name;
-        this.employeeNumber = employeeNumber;
+        this.number = number;
         this.orders = orders;
     }
     
@@ -30,14 +34,13 @@ public class SalesAssoc
         return name;
     }
     
-    public int getEmployeeNumber()
+    public int getemployeeNumber()
     {
-        return employeeNumber;
+        return customerNumber;
     }
     
-    public Order getOrders()
+    public order getorders()
     {
         return orders;
     }
-}
     

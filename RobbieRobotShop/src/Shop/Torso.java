@@ -114,7 +114,7 @@ public class Torso extends RobotPart{
         return head;
     }
     
-    public Arm[] getArms()
+    public Arms[] getArms()
     {
         return arms;
     }
@@ -139,7 +139,7 @@ public class Torso extends RobotPart{
         this.arms = arms;
     }
     
-    protected void setBatteries(Battery[] batteries)
+    protected void setBatteries(Battery[] battery)
     {
         this.batteries = batteries;
 

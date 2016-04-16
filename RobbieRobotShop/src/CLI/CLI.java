@@ -1,5 +1,5 @@
 
-package CLI;          // Change to whatever package name will be
+package j1613;          // Change to whatever package name will be
 
 /**
  * Name: John Ngo

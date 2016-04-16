@@ -18,11 +18,11 @@ import java.awt.Dimension;
 
 public class GUIToolbar {
     //menu is the file menu
-    private JMenu fileMenu, editMenu, createMenu, viewMenu, toolsMenu, helpMenu;
-    private JMenuBar menuBar = new JMenuBar();
-    private JMenuItem menuItem;
-    private Robot cursorMover;
-    private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    JMenu fileMenu, editMenu, createMenu, viewMenu, toolsMenu, helpMenu;
+    JMenuBar menuBar = new JMenuBar();
+    JMenuItem menuItem;
+    Robot cursorMover;
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     
  
     public GUIToolbar()
@@ -60,8 +60,8 @@ public class GUIToolbar {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                            JOptionPane sorry = new JOptionPane();                             
-                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
+                            JOptionPane sorry = new JOptionPane();  
+                            cursorMover.mouseMove((int)(22.5*screenSize.getWidth()/48), (int)(25.5*screenSize.getHeight()/48)); 
                             sorry.showConfirmDialog(null, "This feature is currently not available.", "Sorry about that.", JOptionPane.OK_CANCEL_OPTION);
             }
         });
@@ -76,8 +76,8 @@ public class GUIToolbar {
             public void actionPerformed(ActionEvent e)
             {
                             JOptionPane sorry = new JOptionPane();
-                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
                             sorry.showConfirmDialog(null, "This feature is currently not available.", "Sorry about that.", JOptionPane.OK_CANCEL_OPTION); 
+                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));  
             }
         });
         menuItem.getAccessibleContext().setAccessibleDescription("Saves current shop.");
@@ -91,8 +91,8 @@ public class GUIToolbar {
                         public void actionPerformed(ActionEvent e) 
                         {
                             JOptionPane areYouSure = new JOptionPane();
-                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
                             int areYouSureSelection = areYouSure.showConfirmDialog(null, "Do you really want to exit? All unsaved progress will be lost.","Warning", JOptionPane.YES_NO_OPTION);
+                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
                             if(areYouSureSelection == JOptionPane.YES_OPTION)
                                 System.exit(0);
                             else{}
@@ -116,7 +116,6 @@ public class GUIToolbar {
             public void actionPerformed(ActionEvent e)
             {
                             JOptionPane sorry = new JOptionPane();
-                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
                             sorry.showConfirmDialog(null, "Nothing could have possible been made to cut.", "What were you thinking?", JOptionPane.OK_CANCEL_OPTION);   
             }
         });
@@ -133,7 +132,6 @@ public class GUIToolbar {
             public void actionPerformed(ActionEvent e)
             {
                             JOptionPane sorry = new JOptionPane();
-                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
                             sorry.showConfirmDialog(null, "Nothing could have possible been made to copy.", "What were you thinking?", JOptionPane.OK_CANCEL_OPTION);   
             }
         });
@@ -149,7 +147,6 @@ public class GUIToolbar {
             public void actionPerformed(ActionEvent e)
             {
                             JOptionPane sorry = new JOptionPane();
-                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
                             sorry.showConfirmDialog(null, "Nothing could have possible been made to paste.", "What were you thinking?", JOptionPane.OK_CANCEL_OPTION);   
             }
         });
@@ -189,7 +186,6 @@ public class GUIToolbar {
             public void actionPerformed(ActionEvent e)
             {
                             JOptionPane sorry = new JOptionPane();
-                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
                             sorry.showConfirmDialog(null, "This feature is currently not available.", "Sorry about that.", JOptionPane.OK_CANCEL_OPTION);   
             }
         });
@@ -206,7 +202,6 @@ public class GUIToolbar {
             public void actionPerformed(ActionEvent e)
             {
                             JOptionPane sorry = new JOptionPane();
-                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
                             sorry.showConfirmDialog(null, "This feature is currently not available.", "Sorry about that.", JOptionPane.OK_CANCEL_OPTION);   
             }
         });
@@ -222,7 +217,6 @@ public class GUIToolbar {
             public void actionPerformed(ActionEvent e)
             {
                             JOptionPane sorry = new JOptionPane();
-                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
                             sorry.showConfirmDialog(null, "This feature is currently not available.", "Sorry about that.", JOptionPane.OK_CANCEL_OPTION);   
             }
         });
@@ -239,7 +233,6 @@ public class GUIToolbar {
             public void actionPerformed(ActionEvent e)
             {
                             JOptionPane sorry = new JOptionPane();
-                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
                             sorry.showConfirmDialog(null, "This feature is currently not available.", "Sorry about that.", JOptionPane.OK_CANCEL_OPTION);   
             }
         });
@@ -255,7 +248,6 @@ public class GUIToolbar {
             public void actionPerformed(ActionEvent e)
             {
                             JOptionPane sorry = new JOptionPane();
-                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
                             sorry.showConfirmDialog(null, "This feature is currently not available.", "Sorry about that.", JOptionPane.OK_CANCEL_OPTION);   
             }
         });
@@ -276,7 +268,6 @@ public class GUIToolbar {
             public void actionPerformed(ActionEvent e)
             {
                             JOptionPane sorry = new JOptionPane();
-                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
                             sorry.showConfirmDialog(null, "This feature is currently not available.", "Sorry about that.", JOptionPane.OK_CANCEL_OPTION);   
             }
         });
@@ -291,7 +282,6 @@ public class GUIToolbar {
             public void actionPerformed(ActionEvent e)
             {
                             JOptionPane sorry = new JOptionPane();
-                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
                             sorry.showConfirmDialog(null, "This feature is currently not available.", "Sorry about that.", JOptionPane.OK_CANCEL_OPTION);   
             }
         });
@@ -306,7 +296,6 @@ public class GUIToolbar {
             public void actionPerformed(ActionEvent e)
             {
                             JOptionPane sorry = new JOptionPane();
-                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
                             sorry.showConfirmDialog(null, "This feature is currently not available.", "Sorry about that.", JOptionPane.OK_CANCEL_OPTION);   
             }
         });
@@ -322,7 +311,6 @@ public class GUIToolbar {
             public void actionPerformed(ActionEvent e)
             {
                             JOptionPane sorry = new JOptionPane();
-                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
                             sorry.showConfirmDialog(null, "This feature is currently not available.", "Sorry about that.", JOptionPane.OK_CANCEL_OPTION);   
             }
         });
@@ -337,7 +325,6 @@ public class GUIToolbar {
             public void actionPerformed(ActionEvent e)
             {
                             JOptionPane sorry = new JOptionPane();
-                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
                             sorry.showConfirmDialog(null, "This feature is currently not available.", "Sorry about that.", JOptionPane.OK_CANCEL_OPTION);   
             }
         });
@@ -364,7 +351,6 @@ public class GUIToolbar {
             public void actionPerformed(ActionEvent e)
             {
                             JOptionPane sorry = new JOptionPane();
-                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
                             sorry.showConfirmDialog(null, "This feature is currently not available.", "Sorry about that.", JOptionPane.OK_CANCEL_OPTION);   
             }
         });
@@ -379,7 +365,6 @@ public class GUIToolbar {
             public void actionPerformed(ActionEvent e)
             {
                             JOptionPane sorry = new JOptionPane();
-                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
                             sorry.showConfirmDialog(null, "This feature is currently not available.", "Sorry about that.", JOptionPane.OK_CANCEL_OPTION);   
             }
         });
@@ -394,7 +379,6 @@ public class GUIToolbar {
             public void actionPerformed(ActionEvent e)
             {
                             JOptionPane about = new JOptionPane();
-                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
                             about.showConfirmDialog(null, "The GUI you are currently using was created 4/8/2016. Hopefully more features have been added since then.", "About", JOptionPane.OK_CANCEL_OPTION);   
             }
         });
