@@ -34,7 +34,7 @@ public class GUIToolbar {
         }
     }
     
-    public void createFileMenu()
+    public void createSalesFileMenu()
     {
         fileMenu = new JMenu("File");
         fileMenu.getAccessibleContext().setAccessibleDescription("File menu");
@@ -99,12 +99,12 @@ public class GUIToolbar {
                         }
         });
         
-        menuItem.getAccessibleContext().setAccessibleDescription("Saves current shop.");
+        menuItem.getAccessibleContext().setAccessibleDescription("Exits program.");
         fileMenu.add(menuItem);
       
     }
     
-    public void createEditMenu()
+    public void createSalesEditMenu()
     {
         editMenu = new JMenu("Edit");
         editMenu.getAccessibleContext().setAccessibleDescription("Edit menu");
@@ -177,7 +177,7 @@ public class GUIToolbar {
         editMenu.add(menuItem);        
     }
     
-    public void createCreateMenu()
+    public void createSalesCreateMenu()
     {
         createMenu = new JMenu("Create");
         createMenu.getAccessibleContext().setAccessibleDescription("Create menu");
@@ -264,7 +264,7 @@ public class GUIToolbar {
         createMenu.add(menuItem);        
     }
     
-    public void createViewMenu()
+    public void createSalesViewMenu()
     {
         viewMenu = new JMenu("View");
         viewMenu.getAccessibleContext().setAccessibleDescription("View menu");
@@ -345,14 +345,14 @@ public class GUIToolbar {
         viewMenu.add(menuItem);        
     }
     
-    public void createToolsMenu()
+    public void createSalesToolsMenu()
     {
         toolsMenu = new JMenu("Tools");
         toolsMenu.getAccessibleContext().setAccessibleDescription("Tools menu");
         menuBar.add(toolsMenu);
     }
     
-    public void createHelpMenu()
+    public void createSalesHelpMenu()
     {
         helpMenu = new JMenu("Help");
         helpMenu.getAccessibleContext().setAccessibleDescription("Help menu");
@@ -405,12 +405,23 @@ public class GUIToolbar {
     
     public JMenuBar createSalesToolbar()
     {
-        createFileMenu();
-        createEditMenu();
-        createCreateMenu();
-        createViewMenu();
-        createToolsMenu();
-        createHelpMenu();
+        createSalesFileMenu();
+        createSalesEditMenu();
+        createSalesCreateMenu();
+        createSalesViewMenu();
+        createSalesToolsMenu();
+        createSalesHelpMenu();
         return menuBar;
     }
+    
+    public JMenuBar createCustomerToolbar()
+    {
+        return menuBar;
+    }
+    
+    public JMenuBar createSupervisorToolbar()
+    {
+        return menuBar;
+    }
+    
 }

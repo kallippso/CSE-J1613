@@ -39,14 +39,9 @@ public class LoginFrame extends JFrame {
 
 
   public LoginFrame()  {
-      
     super("Welcome to Robbie's Robot Shop");
-
-    
-    
-    
-    
   }
+  
   public int checkIdentity()
   {
     loginButton = new JButton("Login");
@@ -54,20 +49,20 @@ public class LoginFrame extends JFrame {
     userText = new JTextField(15);
     passText = new JPasswordField(15);
     newUser = new JButton("New User?");
-    username = new JLabel("User - ");
-    password = new JLabel("Pass - ");
+    username = new JLabel("Username: ");
+    password = new JLabel("Password: ");
 
     setSize(300, 200);
     setLocation(500, 280);
     loginPanel.setLayout (null); 
 
 
-    userText.setBounds(70, 30, 150, 20);
-    passText.setBounds(70, 65, 150, 20);
-    loginButton.setBounds(110, 100, 80, 20);
-    newUser.setBounds(110, 135, 80, 20);
-    username.setBounds(20, 28, 80, 20);
-    password.setBounds(20, 63, 80, 20);
+    userText.setBounds(110, 20, 150, 20);
+    passText.setBounds(110, 55, 150, 20);
+    loginButton.setBounds(90, 90, 120, 20);
+    newUser.setBounds(90, 125, 120, 20);
+    username.setBounds(30, 18, 80, 20);
+    password.setBounds(30, 53, 80, 20);
 
     loginPanel.add(loginButton);
     loginPanel.add(userText);
@@ -82,13 +77,13 @@ public class LoginFrame extends JFrame {
 
     
     
-    File check = new File("userinfo.txt");
+    File check = new File("C:/Users/christian/Documents/NetBeansProjects/CSE-J1613/RobbieRobotShop/test");
     if (check.exists()) {
 
       //Checks if the file exists. will not add anything if the file does exist.
     } else {
       try {
-        File fileInstance = new File("userinfo.txt"); // write MenuArray to ObjectOutputStream
+        File fileInstance = new File("C:/Users/christian/Documents/NetBeansProjects/CSE-J1613/RobbieRobotShop/test"); // write MenuArray to ObjectOutputStream
         fileInstance.createNewFile();
         fis = new FileInputStream(fileInstance);
         ois = new ObjectInputStream(fis);   
@@ -110,6 +105,7 @@ public class LoginFrame extends JFrame {
 
     loginButton.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
+                        
         try {
           //File file = new File("userPass.txt");
           //Scanner scan = new Scanner(file);
@@ -136,6 +132,7 @@ public class LoginFrame extends JFrame {
                         testFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                         testFrame.setJMenuBar(new GUIToolbar().createSalesToolbar());
                         testFrame.setVisible(true);
+                        dispose();
                   }
                   else
                   {
