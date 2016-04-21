@@ -1,0 +1,32 @@
+ARMS
+Arm1//10.000000//10.00//An arm.
+ARMin//5.000000//12.00//An arm that's in.
+HEADS
+Head1//12.000000//20.00//A head.
+aHEAD//15.000000//30.00//A head that's ahead.
+TORSOS
+Torso1//50.000000//100.00//A torso.//3
+Torso2//40.000000//80.00//Another torso//2
+LOCOMOTORS
+Locomotor1//20.000000//40.00//A locomotor.//15
+CrazyMotor//20.000000//60.00//A crazy motor.//40
+BATTERIES
+Battery1//1.000000//2.00//A battery.//10.000000//5.000000
+Battery2//1.000000//3.00//Another battery.//12.000000//6.000000
+Batter-3//2.000000//5.99//Battery the third.//18.000000//10.000000
+ROBOT MODELS
+7//3//TestModel1//150.00//0//0//0//0//1//2//1
+7//2//TestModel2//179.87//1//1//1//2//2//0//0
+SALES ASSOCIATES
+Employee1
+Bob
+Steve
+CUSTOMERS
+Customer1//0.00
+Chump//0.00
+Rich Person//0.00
+Robot Fanatic//0.00
+ORDERS
+4/21/2016//1//1//1//1
+1/1/2015//3//2//1//2
+END OF FILE

@@ -23,12 +23,15 @@ public class Battery extends RobotPart{
     private double cost;
     private String description;
     private RenderedImage image;
+    private static int numBatteries = 0;
     
     public Battery(){
+        this.partNumber = numBatteries++;
         energy = -1;
         maxPower = -1;
 }
     public Battery (double energy, double maxPower){
+        this.partNumber = numBatteries++;
         this.energy = energy;
         this.maxPower = maxPower;
     }
@@ -36,35 +39,92 @@ public class Battery extends RobotPart{
     public Battery(String name, ComponentType componentType, double weight, double cost, String description, RenderedImage image)
     {
         this.name = name;
+        this.partNumber = numBatteries++;
         this.componentType = componentType;
         this.weight = weight;
         this.cost = cost;
         this.description = description;
         this.image = image;
-        this.energy = energy;
-        this.maxPower = maxPower;
+        this.energy = 0;
+        this.maxPower = 0;
     }
     
-    public Battery(String name, ComponentType componentType, double weight, double cost, String description, double energy, double maxPower)
+    public Battery(String name, int num, ComponentType componentType, double weight, double cost, String description, RenderedImage image)
     {
         this.name = name;
+        this.partNumber = num;
+        this.componentType = componentType;
+        this.weight = weight;
+        this.cost = cost;
+        this.description = description;
+        this.image = image;
+        this.energy = 0;
+        this.maxPower = 0;
+        numBatteries++;
+    }
+    
+    public Battery(String name, int num, ComponentType componentType, double weight, double cost, String description, double energy, double maxPower)
+    {
+        this.name = name;
+        this.partNumber = num;
         this.weight = weight;
         this.cost = cost;
         this.description = description;
         this.image = null;
         this.energy = energy;
         this.maxPower = maxPower;
+        numBatteries++;
     }
     
-    public Battery(String name, ComponentType componentType, double weight, double cost, String description, RenderedImage image, double energy, double maxPower)
+    public Battery(String name, int num, ComponentType componentType, double weight, double cost, String description, RenderedImage image, double energy, double maxPower)
     {
         this.name = name;
+        this.partNumber = num;
         this.weight = weight;
         this.cost = cost;
         this.description = description;
         this.image = image;
         this.energy = energy;
         this.maxPower = maxPower;
+        numBatteries++;
+    }
+    
+    public Battery(String name, int num, String type, double weight, double cost, String description, double energy, double power)
+    {
+        this.name = name;
+        this.partNumber = num;
+        this.weight = weight;
+        this.cost = cost;
+        this.description = description;
+        this.image = null;
+        this.energy = energy;
+        this.maxPower = power;
+        numBatteries++;
+    }
+    
+    public Battery(String name, int partNumber, double weight, double cost, String description, double energy, double power)
+    {
+        this.name = name;
+        this.partNumber = partNumber;
+        this.weight = weight;
+        this.cost = cost;
+        this.description = description;
+        this.image = null;
+        this.energy = energy;
+        this.maxPower = power;
+        numBatteries++;
+    }
+    
+    public Battery(String name, double weight, double cost, String description, double energy, double power)
+    {
+        this.name = name;
+        this.partNumber = numBatteries++;
+        this.weight = weight;
+        this.cost = cost;
+        this.description = description;
+        this.image = null;
+        this.energy = energy;
+        this.maxPower = power;
     }
     
     public double getEnergy(){
@@ -151,5 +211,31 @@ public class Battery extends RobotPart{
     protected void setImage(RenderedImage image)
     {
         this.image = image;
+    }
+    
+    @Override
+    public String shortPrint()
+    {
+        return String.format("[Battery]\tName: %15s \t Part Number: %d", name, partNumber);
+    }
+    
+    @Override
+    public String toString()
+    {
+        String results = "\nName: " + name;
+        results += "\nComponent Type: battery";
+        results += "\nPart Number: " + partNumber;
+        results += "\nWeight: " + weight;
+        results += "\nCost: " + cost;
+        results += "\nEnergy: " + energy;
+        results += "\nMax Power: " + maxPower;
+        results += "\nDescription: " + description;
+        
+        return results;
+    }
+    
+    public String save()
+    {
+        return String.format("%s//%f//%.2f//%s//%f//%f\n", name, weight, cost, description, energy, maxPower);
     }
 }

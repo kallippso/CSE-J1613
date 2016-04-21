@@ -1,6 +1,5 @@
 
-
-package CLI;          // Change to whatever package name will be
+package Shop;          // Change to whatever package name will be
 
 /**
  * Name: John Ngo
@@ -372,27 +371,18 @@ public class CLI {
         String reply;
         boolean okay;
         final int MIN_YEAR = 2000, MAX_YEAR = 2020;
-<<<<<<< HEAD
-        int num, m, d, y, search, s;
-        Shop.Date date;
-        //Customer cust;
-        //SalesAssoc sales;
-        //RobotModel model;
-        Shop.Status status;
-=======
         int m, d, y, search, s;
         Date date;
         Customer cust;
         SalesAssoc sales;
         RobotModel model;
         Status status;
->>>>>>> origin/master
         
         System.out.print("Do you want to use today's date for the order? (Y/N): ");
         reply = keyboard.next();
         if(reply.toLowerCase().equals("y"))
         {
-            date = new Shop.Date();
+            date = new Date();
         }
         else
         {
@@ -417,7 +407,7 @@ public class CLI {
                 System.out.printf("Invalid year. Enter a integer between %d and %d (inclusive): ", MIN_YEAR, MAX_YEAR);
                 y = keyboard.nextInt();
             }
-            date = new Shop.Date(m, d, y);
+            date = new Date(m, d, y);
         }
         okay = true;
         while(okay)
@@ -459,15 +449,9 @@ public class CLI {
                 System.out.print("Invalid status. Enter an integer between 0 and 4 (inclusive): ");
                 s = keyboard.nextInt();
             }
-<<<<<<< HEAD
-            status = new Shop.Status(s);
-            //robotShop.placeOrder(num, date, cust, sales, model, status);
-            System.out.println("\nOrder number " + num + " for robot model " + search + " has been placed on " + date + " by a sales associate for a customer.\nThe status of the order is: " + status);
-=======
             status = new Status(s);
             robotShop.placeOrder(date, cust, sales, model, status);
             System.out.println("\nOrder number " + (robotShop.getNumOrders()-1) + " for robot model " + model.getModelNumber() + " has been placed on " + date + " by a sales associate for a customer.\nThe status of the order is: " + status);
->>>>>>> origin/master
             okay = false;
         }
     }
@@ -542,9 +526,6 @@ public class CLI {
     
     public void viewOrders()
     {
-<<<<<<< HEAD
-        //Shop.viewOrders();
-=======
         int num = 0;
         while(num != -1)
         {
@@ -803,7 +784,6 @@ public class CLI {
                 System.out.println("\n The number inputted does not exist within the range of the options.");
             }       
         }
->>>>>>> origin/master
     }
     
     public static void main(String [] args) throws IOException

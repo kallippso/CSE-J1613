@@ -18,11 +18,12 @@ public class Arm extends RobotPart{
     private int partNumber;
     private double weight, cost;
     private RenderedImage image;
+    private static int numArms = 0;
     
     //constructors
     public Arm(){
         name = "ARMin";
-        partNumber = -1;
+        partNumber = numArms++;
         weight = -1;
         cost = -1;
         description = "An arm.";
@@ -36,6 +37,7 @@ public class Arm extends RobotPart{
         this.cost = cost;
         description = "An arm.";
         image = null;
+        numArms++;
     }
     public Arm(String name, int partNumber, double weight, double cost, String description){
         this.name = name;
@@ -43,7 +45,8 @@ public class Arm extends RobotPart{
         this.weight = weight;
         this.cost = cost;
         this.description = description;
-        image = null;
+        this.image = null;
+        numArms++;
     }
     
     public Arm(String name, ComponentType type, double weight, double cost, String description, RenderedImage image){
@@ -53,6 +56,16 @@ public class Arm extends RobotPart{
         this.cost = cost;
         this.description = description;
         image = image;
+        numArms++;
+    }
+    
+    public Arm(String name, double weight, double cost, String description){
+        this.name = name;
+        this.partNumber = numArms++;
+        this.weight = weight;
+        this.cost = cost;
+        this.description = description;
+        this.image = null;
     }
 
     //methods
@@ -109,13 +122,35 @@ public class Arm extends RobotPart{
         return image;
     }
     
-    int powerConsumed(int speed){
+    public int powerConsumed(int speed){
         int time = 1;
         int watts = speed*time;
         return watts;
     }
     
-    //insert method to override from abstract class RobotPart here...
+    @Override
+    public String shortPrint()
+    {
+        return String.format("[Arm]\tName: %15s \t Part Number: %d", name, partNumber);
+    }
+    
+    @Override
+    public String toString()
+    {
+        String results = "\nName: " + name;
+        results += "\nComponent Type: arm";
+        results += "\nPart Number: " + partNumber;
+        results += "\nWeight: " + weight;
+        results += "\nCost: " + cost;
+        results += "\nDescription: " + description;
+        
+        return results;
+    }
+    
+    public String save()
+    {
+        return String.format("%s//%f//%.2f//%s\n", name, weight, cost, description);
+    }
     
     public static void main()
     {

@@ -20,14 +20,17 @@ public class Locomotor extends RobotPart{
     private double cost;
     private String description;
     private RenderedImage image;
+    private static int numMotors = 0;
     
     public Locomotor() {
         maxSpeed = -1;
+        numMotors++;
     }
     
     public Locomotor(String name, double weight, double cost, String description, int speed)
     {
         this.name = name;
+        this.partNumber = numMotors++;
         this.weight = weight;
         this.cost = cost;
         this.description = description;
@@ -38,6 +41,7 @@ public class Locomotor extends RobotPart{
     public Locomotor(String name, ComponentType componentType, double weight, double cost, String description, int speed)
     {
         this.name = name;
+        this.partNumber = numMotors++;
         this.weight = weight;
         this.cost = cost;
         this.description = description;
@@ -48,6 +52,7 @@ public class Locomotor extends RobotPart{
     public Locomotor(String name, ComponentType componentType, double weight, double cost, String description, RenderedImage image)
     {
         this.name = name;
+        this.partNumber = numMotors++;
         this.weight = weight;
         this.cost = cost;
         this.description = description;
@@ -57,6 +62,7 @@ public class Locomotor extends RobotPart{
     public Locomotor(String name, ComponentType componentType, double weight, double cost, String description, RenderedImage image, int speed)
     {
         this.name = name;
+        this.partNumber = numMotors++;
         this.weight = weight;
         this.cost = cost;
         this.description = description;
@@ -66,7 +72,20 @@ public class Locomotor extends RobotPart{
     
     public Locomotor(int maxSpeed){
         this.maxSpeed = maxSpeed;
+        numMotors++;
     }
+    
+    public Locomotor(String name, int partNumber, double weight, double cost, String description, int value)
+    {
+        this.name = name;
+        this.partNumber = partNumber;
+        this.weight = weight;
+        this.cost = cost;
+        this.description = description;
+        this.image = null;
+        this.maxSpeed = value;
+    }
+    
     public int getMaxSpeed(){
         return maxSpeed; 
     }
@@ -150,4 +169,29 @@ public class Locomotor extends RobotPart{
         speed = speed;
         return speed;
      }
+    
+    @Override
+    public String shortPrint()
+    {
+        return String.format("[Locomotor]\tName: %15s \t Part Number: %d", name, partNumber);
+    }
+    
+    @Override
+    public String toString()
+    {
+        String results = "\nName: " + name;
+        results += "\nComponent Type: locotmotor";
+        results += "\nPart Number: " + partNumber;
+        results += "\nWeight: " + weight;
+        results += "\nCost: " + cost;
+        results += "\nMax Speed: " + maxSpeed;
+        results += "\nDescription: " + description;
+        
+        return results;
+    }
+    
+    public String save()
+    {
+        return String.format("%s//%f//%.2f//%s//%d\n", name, weight, cost, description, maxSpeed);
+    }
 }

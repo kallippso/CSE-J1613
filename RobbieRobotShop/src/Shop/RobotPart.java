@@ -94,6 +94,6 @@ public abstract class RobotPart {
         this.image = image;
     }
     
-    
+    abstract String shortPrint();
     
 }

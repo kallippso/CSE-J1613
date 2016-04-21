@@ -16,25 +16,56 @@ public class Customer
     private String name;
     private int customerNumber;
     private double wallet;
-    private ArrayList<Order> orders; 
-    
-    
+    private ArrayList<Order> orders;
+    private static int numCustomers = 0;
+
    
     public Customer()
     {
         name = "test";
-        customerNumber = -1;
+        customerNumber = numCustomers++;
         wallet = 0;
         orders = new ArrayList<>();
     }
-        
-        
     
+    public Customer(String name)
+    {
+        this.name = name;
+        customerNumber = numCustomers++;
+        wallet = 0;
+        orders = new ArrayList<>();
+    }
+    
+    public Customer(String name, double wallet)
+    {
+        this.name = name;
+        customerNumber = numCustomers++;
+        this.wallet = wallet;
+        orders = new ArrayList<>();
+    }
+    
+    public Customer(String name, int customerNumber)
+    {
+        this.name = name;
+        this.customerNumber = customerNumber;
+        wallet = 0;
+        orders = new ArrayList<>();
+        numCustomers++;
+    }   
     
     public Customer(String name, int customerNumber, double wallet, ArrayList<Order> orders)
     {
         this.name = name;
         this.customerNumber = customerNumber;
+        this.wallet = wallet;
+        this.orders = orders;
+        numCustomers++;
+    }
+    
+    public Customer(String name, double wallet, ArrayList<Order> orders)
+    {
+        this.name = name;
+        this.customerNumber = numCustomers++;
         this.wallet = wallet;
         this.orders = orders;
     }
@@ -44,7 +75,7 @@ public class Customer
         return name;
     }
     
-    public int getcustomerNumber()
+    public int getCustomerNumber()
     {
         return customerNumber;
     }
@@ -57,9 +88,7 @@ public class Customer
     public ArrayList<Order> getOrder()
     {
         return orders;
-    }
- 
-    
+    }  
     
     protected void setName(String name)
     {
@@ -81,22 +110,69 @@ public class Customer
         this.orders = orders;
     }
     
+    public void addOrder(Order order)
+    {
+        orders.add(order);
+    }
+    
     public void viewBill()
     {
-    int i = 0;
-    double total = 0;
-    while(i < orders.size())
-    {
-     System.out.println("\nCost of Order " + orders.get(i).getOrderNumber() + ": " + orders.get(i).totalPrice());
-     total +=  orders.get(i).totalPrice();
-     i++;
+        int i = 0;
+        double total = 0;
+        while(i < orders.size())
+        {
+            System.out.println("\nCost of Order " + orders.get(i).getOrderNumber() + ": " + orders.get(i).totalPrice());
+            total +=  orders.get(i).totalPrice();
+            i++;
+        }
+        System.out.println("Total Bill: " + total);
     }
-     System.out.println("Total Bill: " + total);
+    
+    public void viewOrders()
+    {
+        System.out.println("Orders:");
+        int i = 0;
+        while(i < orders.size())
+        {
+            System.out.println(orders.get(i));
+            i++;
+        }
+    }
+    
+    public String shortPrint()
+    {
+        return String.format("Name: %25s \t Customer Number: %d", name, customerNumber);
+    }
+    
+    @Override
+    public String toString()
+    {
+        String results = "\nName: " + name;
+        results += "\nCustomer Number: " + customerNumber;
+        results += "\nWallet: " + wallet;
+        results += "\nOrders:\n";
+        int i = 0;
+        while(i < orders.size())
+        {
+            results += String.format("\t%d) %s\n", i, orders.get(i).shortPrint());
+            i++;
+        }
+        
+        return results;
+    }
+    
+    public String save()
+    {
+        return String.format("%s//%.2f\n", name, wallet);
     }
     
     public static void main(String [] args)
     {
-        Customer test = new Customer(); 
-        test.viewBill();
+        Customer test = new Customer();
+        SalesAssoc sales = new SalesAssoc();
+        Order testOrder = new Order(1, new Date("1/1/2016"), test, sales, new RobotModel(), 1);
+        System.out.println(testOrder);
+        test.addOrder(testOrder);
+        test.viewOrders();
     }
 }

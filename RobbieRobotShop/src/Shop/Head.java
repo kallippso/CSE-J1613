@@ -21,6 +21,7 @@ public class Head extends RobotPart
     private double cost;
     private String description;
     private RenderedImage image;
+    private static int numHeads2 = 0;
     
     public Head()
     {
@@ -41,6 +42,30 @@ public class Head extends RobotPart
         this.description = description;
         this.image = image;
         this.componentType = componentType;
+        numHeads2++;
+    }
+    
+    public Head(String name, int partNumber, double weight, double cost, String description)
+    {
+        this.name = name;
+        this.partNumber = partNumber;
+        this.componentType = new ComponentType("Head", this.getClass());
+        this.weight = weight;
+        this.cost = cost;
+        this.description = description;
+        this.image = null;
+        numHeads2++;
+    }
+    
+    public Head(String name, double weight, double cost, String description)
+    {
+        this.name = name;
+        this.partNumber = numHeads2++;
+        this.componentType = new ComponentType("Head", this.getClass());
+        this.weight = weight;
+        this.cost = cost;
+        this.description = description;
+        this.image = null;
     }
     
     public String getName()
@@ -112,5 +137,29 @@ public class Head extends RobotPart
     protected void setImage(RenderedImage image)
     {
         this.image = image;
+    }
+    
+    @Override
+    public String shortPrint()
+    {
+        return String.format("[Head]\tName: %15s \t Part Number: %d", name, partNumber);
+    }
+    
+    @Override
+    public String toString()
+    {
+        String results = "\nName: " + name;
+        results += "\nComponent Type: head";
+        results += "\nPart Number: " + partNumber;
+        results += "\nWeight: " + weight;
+        results += "\nCost: " + cost;
+        results += "\nDescription: " + description;
+        
+        return results;
+    }
+    
+    public String save()
+    {
+        return String.format("%s//%f//%.2f//%s\n", name, weight, cost, description);
     }
 }

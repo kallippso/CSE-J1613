@@ -17,11 +17,12 @@ public class Order {
     private SalesAssoc salesAssoc;
     private RobotModel robotModel;
     private Status status;
+    private static int numOrders = 0;
     
     // constructors
     public Order()
     {
-        orderNumber = -1;
+        orderNumber = numOrders++;
         date = new Date(1, 1, 2000);
         customer = new Customer();
         salesAssoc = new SalesAssoc();
@@ -37,11 +38,33 @@ public class Order {
         this.salesAssoc = staff;
         this.robotModel = model;
         this.status = stat;
+        numOrders++;
     }
     
     public Order(int num, Date date, Customer cust, SalesAssoc staff, RobotModel model, int stat)
     {
         this.orderNumber = num;
+        this.date = date;
+        this.customer = cust;
+        this.salesAssoc = staff;
+        this.robotModel = model;
+        this.status = new Status(stat);
+        numOrders++;
+    }
+    
+    public Order(Date date, Customer cust, SalesAssoc staff, RobotModel model, Status stat)
+    {
+        this.orderNumber = numOrders++;
+        this.date = date;
+        this.customer = cust;
+        this.salesAssoc = staff;
+        this.robotModel = model;
+        this.status = stat;
+    }
+    
+    public Order(Date date, Customer cust, SalesAssoc staff, RobotModel model, int stat)
+    {
+        this.orderNumber = numOrders++;
         this.date = date;
         this.customer = cust;
         this.salesAssoc = staff;
@@ -122,6 +145,16 @@ public class Order {
     public double totalPrice()
     {
         return this.robotPrice() + this.calculateShipping() + this.calculateTax();
+    }
+    
+    public String save()
+    {
+        return String.format("%s//%d//%d//%d//%d\n", date, customer.getCustomerNumber(), salesAssoc.getEmployeeNumber(), robotModel.getModelNumber(), status.getStatus());
+    }
+    
+    public String shortPrint()
+    {
+        return String.format("Order Number: %5d \t Date: %s", orderNumber, date);
     }
     
     @Override
