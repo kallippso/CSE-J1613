@@ -39,14 +39,9 @@ public class LoginFrame extends JFrame {
 
 
   public LoginFrame()  {
-      
     super("Welcome to Robbie's Robot Shop");
-
-    
-    
-    
-    
   }
+  
   public int checkIdentity()
   {
     loginButton = new JButton("Login");
