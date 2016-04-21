@@ -118,6 +118,17 @@ public class LoginFrame extends JFrame {
                         testFrame.setSize(600, 480);
                         testFrame.setLocation(100,100);
                         testFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        switch(userClassification)
+                        {
+                            case 0: 
+                                testFrame.setJMenuBar(new GUIToolbar().createCustomerToolbar());
+                                break;
+                            case 1:
+                                testFrame.setJMenuBar(new GUIToolbar().createSalesToolbar());
+                                break;
+                            case 2:
+                                testFrame.setJMenuBar(new GUIToolbar().createSupervisorToolbar());
+                        }
                         testFrame.setJMenuBar(new GUIToolbar().createSalesToolbar());
                         testFrame.setVisible(true);
                         dispose();

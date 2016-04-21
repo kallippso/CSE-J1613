@@ -177,6 +177,49 @@ public class GUIToolbar {
         editMenu.add(menuItem);        
     }
     
+    public void createCustomerCreateMenu()
+    {
+        createMenu = new JMenu("Create");
+        createMenu.getAccessibleContext().setAccessibleDescription("Create menu");
+        menuBar.add(createMenu);
+        
+        menuItem = new JMenuItem(new AbstractAction("Order")
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                            JOptionPane sorry = new JOptionPane();
+                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
+                            sorry.showConfirmDialog(null, "This feature is currently not available.", "Sorry about that.", JOptionPane.OK_CANCEL_OPTION);   
+            }
+        });
+        menuItem.getAccessibleContext().setAccessibleDescription("Create order.");
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.ALT_MASK));
+
+        createMenu.add(menuItem);
+    }
+    
+    public void createSupervisorCreateMenu()
+    {
+        createMenu = new JMenu("Create");
+        createMenu.getAccessibleContext().setAccessibleDescription("Create menu");
+        menuBar.add(createMenu);
+        
+        menuItem = new JMenuItem(new AbstractAction("Sales Associate")
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                            JOptionPane sorry = new JOptionPane();
+                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
+                            sorry.showConfirmDialog(null, "This feature is currently not available.", "Sorry about that.", JOptionPane.OK_CANCEL_OPTION);   
+            }
+        });
+        menuItem.getAccessibleContext().setAccessibleDescription("Create sales associate.");
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.ALT_MASK));
+        createMenu.add(menuItem);
+    }
+    
     public void createSalesCreateMenu()
     {
         createMenu = new JMenu("Create");
@@ -216,20 +259,6 @@ public class GUIToolbar {
 
         createMenu.addSeparator();
         
-        menuItem = new JMenuItem(new AbstractAction("Sales Associate")
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                            JOptionPane sorry = new JOptionPane();
-                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
-                            sorry.showConfirmDialog(null, "This feature is currently not available.", "Sorry about that.", JOptionPane.OK_CANCEL_OPTION);   
-            }
-        });
-        menuItem.getAccessibleContext().setAccessibleDescription("Create sales associate.");
-        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.ALT_MASK));
-        createMenu.add(menuItem);
-
         createMenu.addSeparator();
         createMenu.addSeparator();
         
@@ -263,6 +292,60 @@ public class GUIToolbar {
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.ALT_MASK));
         createMenu.add(menuItem);        
     }
+    
+    public void createCustomerViewMenu()
+    {
+        viewMenu = new JMenu("View");
+        viewMenu.getAccessibleContext().setAccessibleDescription("View menu");
+        menuBar.add(viewMenu);
+        
+        menuItem = new JMenuItem(new AbstractAction("Orders")
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                            JOptionPane sorry = new JOptionPane();
+                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
+                            sorry.showConfirmDialog(null, "This feature is currently not available.", "Sorry about that.", JOptionPane.OK_CANCEL_OPTION);   
+            }
+        });
+        menuItem.getAccessibleContext().setAccessibleDescription("View orders.");
+        viewMenu.add(menuItem);
+    }
+    
+    public void createSupervisorViewMenu()
+    {
+        viewMenu = new JMenu("View");
+        viewMenu.getAccessibleContext().setAccessibleDescription("View menu");
+        menuBar.add(viewMenu);
+        menuItem = new JMenuItem(new AbstractAction("Orders")
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                            JOptionPane sorry = new JOptionPane();
+                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
+                            sorry.showConfirmDialog(null, "This feature is currently not available.", "Sorry about that.", JOptionPane.OK_CANCEL_OPTION);   
+            }
+        });
+        menuItem.getAccessibleContext().setAccessibleDescription("View orders.");
+        viewMenu.add(menuItem);
+        viewMenu.addSeparator();
+        menuItem = new JMenuItem(new AbstractAction("Customers")
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                            JOptionPane sorry = new JOptionPane();
+                            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
+                            sorry.showConfirmDialog(null, "This feature is currently not available.", "Sorry about that.", JOptionPane.OK_CANCEL_OPTION);   
+            }
+        });
+        menuItem.getAccessibleContext().setAccessibleDescription("View customers.");
+        viewMenu.add(menuItem);
+        
+    }
+    
     
     public void createSalesViewMenu()
     {
@@ -351,6 +434,7 @@ public class GUIToolbar {
         toolsMenu.getAccessibleContext().setAccessibleDescription("Tools menu");
         menuBar.add(toolsMenu);
     }
+   
     
     public void createSalesHelpMenu()
     {
@@ -416,11 +500,17 @@ public class GUIToolbar {
     
     public JMenuBar createCustomerToolbar()
     {
+        createCustomerCreateMenu();
+        createCustomerViewMenu();
+        createSalesHelpMenu();
         return menuBar;
     }
     
     public JMenuBar createSupervisorToolbar()
     {
+        createSupervisorCreateMenu();
+        createSupervisorViewMenu();
+        createSalesHelpMenu();
         return menuBar;
     }
     
