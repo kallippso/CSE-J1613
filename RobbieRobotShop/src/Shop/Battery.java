@@ -212,4 +212,30 @@ public class Battery extends RobotPart{
     {
         this.image = image;
     }
+    
+    @Override
+    public String shortPrint()
+    {
+        return String.format("[Battery]\tName: %15s \t Part Number: %d", name, partNumber);
+    }
+    
+    @Override
+    public String toString()
+    {
+        String results = "\nName: " + name;
+        results += "\nComponent Type: battery";
+        results += "\nPart Number: " + partNumber;
+        results += "\nWeight: " + weight;
+        results += "\nCost: " + cost;
+        results += "\nEnergy: " + energy;
+        results += "\nMax Power: " + maxPower;
+        results += "\nDescription: " + description;
+        
+        return results;
+    }
+    
+    public String save()
+    {
+        return String.format("%s//%f//%.2f//%s//%f//%f\n", name, weight, cost, description, energy, maxPower);
+    }
 }

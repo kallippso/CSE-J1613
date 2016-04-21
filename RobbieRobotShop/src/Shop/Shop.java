@@ -7,6 +7,8 @@ package Shop;
 
 import java.awt.image.RenderedImage;
 import java.util.ArrayList;
+import java.io.*;
+import java.util.Scanner;
 
 /**
  * Description: For Group J1613's Robot Project - the class defining a Shop
@@ -24,6 +26,9 @@ public class Shop {
     private ArrayList<Torso> torsoList;
     private ArrayList<Battery> batteryList;
     private ArrayList<Arm> armList;
+    
+    private File file;
+    private String fileName = "RobotShopData.txt";
     
     // constructors
     public Shop()
@@ -195,6 +200,14 @@ public class Shop {
             return null;
     }
     
+    public Order getOrder(int index)
+    {
+        if(index < getNumOrders() && index >= 0)
+            return orders.get(index);
+        else
+            return null;
+    }
+    
         // createPart methods
     public void createPart(ComponentType componentName, String name, double weight, double cost, String description, RenderedImage image)
     {
@@ -314,6 +327,11 @@ public class Shop {
         customers.add(new Customer(name));
     }
     
+    public void newCustomer(String name, double wallet)
+    {
+        customers.add(new Customer(name, wallet));
+    }
+    
     public void newSalesAssoc(String name, int num)
     {
         salesAssoc.add(new SalesAssoc(name, num));
@@ -340,13 +358,111 @@ public class Shop {
         sales.addOrder(order);
     }
     
+    public void placeOrder(Date date, int cust, int sales, RobotModel model, Status status)
+    {   
+        Customer customer = customers.get(cust);
+        SalesAssoc employee = salesAssoc.get(sales);
+        Order order = new Order(date, customer, employee, model, status);
+        orders.add(order);
+        customer.addOrder(order);
+        employee.addOrder(order);
+    }
+    
     public void viewOrders()
     {
         System.out.println("Orders:");
         int i = 0;
         while(i < orders.size())
         {
-            System.out.println(orders.get(i));
+            System.out.printf("%d) %s\n", i, orders.get(i).shortPrint());
+            i++;
+        }
+    }
+    
+    public void viewCustomers()
+    {
+        System.out.println("Customers:");
+        int i = 0;
+        while(i < customers.size())
+        {
+            System.out.printf("%d) %s\n", i, customers.get(i).shortPrint());
+            i++;
+        }
+    }
+    
+    public void viewStaff()
+    {
+        System.out.println("Sales Associates:");
+        int i = 0;
+        while(i < salesAssoc.size())
+        {
+            System.out.printf("%d) %s\n", i, salesAssoc.get(i).shortPrint());
+            i++;
+        }
+    }
+    
+    public void viewModels()
+    {
+        System.out.println("Robot Models:");
+        int i = 0;
+        while(i < robotModels.size())
+        {
+            System.out.printf("%d) %s\n", i, robotModels.get(i).shortPrint());
+            i++;
+        }
+    }
+    
+    public void viewHeads()
+    {
+        System.out.println("Heads:");
+        int i = 0;
+        while(i < headList.size())
+        {
+            System.out.printf("%d) %s\n", i, headList.get(i).shortPrint());
+            i++;
+        }
+    }
+    
+    public void viewArms()
+    {
+        System.out.println("Arms:");
+        int i = 0;
+        while(i < armList.size())
+        {
+            System.out.printf("%d) %s\n", i, armList.get(i).shortPrint());
+            i++;
+        }
+    }
+    
+    public void viewMotors()
+    {
+        System.out.println("Locomotors:");
+        int i = 0;
+        while(i < locomotorList.size())
+        {
+            System.out.printf("%d) %s\n", i, locomotorList.get(i).shortPrint());
+            i++;
+        }
+    }
+    
+    public void viewTorsos()
+    {
+        System.out.println("Torsos:");
+        int i = 0;
+        while(i < torsoList.size())
+        {
+            System.out.printf("%d) %s\n", i, torsoList.get(i).shortPrint());
+            i++;
+        }
+    }
+    
+    public void viewBatteries()
+    {
+        System.out.println("Batteries:");
+        int i = 0;
+        while(i < batteryList.size())
+        {
+            System.out.printf("%d) %s\n", i, batteryList.get(i).shortPrint());
             i++;
         }
     }
@@ -356,9 +472,303 @@ public class Shop {
 
     }
 
-    public void save()
+    public void save() throws IOException
     {
-
+        FileWriter outfile = new FileWriter(fileName);
+        String data = String.format("ARMS\n");
+	for (int i = 0; i < armList.size(); i++)
+	{
+            data += armList.get(i).save();
+	}
+        data += String.format("HEADS\n");
+	for (int i = 0; i < headList.size(); i++)
+	{
+            data += headList.get(i).save();
+	}
+        data += String.format("TORSOS\n");
+        for (int i = 0; i < torsoList.size(); i++)
+	{
+            data += torsoList.get(i).save();
+	}
+        data += String.format("LOCOMOTORS\n");
+        for (int i = 0; i < locomotorList.size(); i++)
+	{
+            data += locomotorList.get(i).save();
+	}
+        data += String.format("BATTERIES\n");
+        for (int i = 0; i < batteryList.size(); i++)
+	{
+            data += batteryList.get(i).save();
+	}
+        data += String.format("ROBOT MODELS\n");
+        for (int i = 0; i < robotModels.size(); i++)
+	{
+            data += robotModels.get(i).save();
+	}
+        data += String.format("SALES ASSOCIATES\n");
+        for (int i = 0; i < salesAssoc.size(); i++)
+	{
+            data += salesAssoc.get(i).save();
+	} 
+        data += String.format("CUSTOMERS\n");
+        for (int i = 0; i < customers.size(); i++)
+	{
+            data += customers.get(i).save();
+	}
+        data += String.format("ORDERS\n");
+        for (int i = 0; i < orders.size(); i++)
+	{
+            data += orders.get(i).save();
+	}
+        data += String.format("END OF FILE\n");
+	outfile.write(data);
+	outfile.close();
+        System.out.println("\nThe data has been successfully saved to the file.\n");
+    }
+    
+    public void load() throws IOException
+    {
+        Scanner keyboard = new Scanner(System.in);
+        Scanner inputFile = null;
+        System.out.print("Enter the filename of the file: ");
+        try{
+            fileName = keyboard.next();
+            file = new File(fileName);
+            inputFile = new Scanner(file);
+            
+            inputFile.useDelimiter("\n");
+            String line = "", name, date, description;
+            int number, customerNum, salesNum, modelNum, status, speed, batteries;
+            double cost, wallet, weight, energy, power; 
+            Arm arm1, arm2;
+            Battery battery1, battery2, battery3;
+            Head head;
+            Locomotor motor;
+            Torso torso;
+            while(inputFile.hasNext())
+            {
+                line = inputFile.next();
+                if(line.equals("ARMS"))
+                {
+                    line = inputFile.next();
+                    while(!line.equals("HEADS"))
+                    {
+                        String[] data = line.split("//");
+                        name = data[0];
+                        weight = Double.parseDouble(data[1]);
+                        cost = Double.parseDouble(data[2]);
+                        description = data[3];
+                        createPart(name, "arm", weight, cost, description);
+                        line = inputFile.next();
+                    }
+                }
+                if(line.equals("HEADS"))
+                {
+                    line = inputFile.next();
+                    while(!line.equals("TORSOS"))
+                    {
+                        String[] data = line.split("//");
+                        name = data[0];
+                        weight = Double.parseDouble(data[1]);
+                        cost = Double.parseDouble(data[2]);
+                        description = data[3];
+                        createPart(name, "head", weight, cost, description);
+                        line = inputFile.next();
+                    }
+                }
+                if(line.equals("TORSOS"))
+                {
+                    line = inputFile.next();
+                    while(!line.equals("LOCOMOTORS"))
+                    {
+                        String[] data = line.split("//");
+                        name = data[0];
+                        weight = Double.parseDouble(data[1]);
+                        cost = Double.parseDouble(data[2]);
+                        description = data[3];
+                        batteries = Integer.parseInt(data[4]);
+                        createPart(name, "torso", weight, cost, description, batteries);
+                        line = inputFile.next();
+                    }
+                }
+                if(line.equals("LOCOMOTORS"))
+                {
+                    line = inputFile.next();
+                    while(!line.equals("BATTERIES"))
+                    {
+                        String[] data = line.split("//");
+                        name = data[0];
+                        weight = Double.parseDouble(data[1]);
+                        cost = Double.parseDouble(data[2]);
+                        description = data[3];
+                        speed = Integer.parseInt(data[4]);
+                        createPart(name, "locomotor", weight, cost, description, speed);
+                        line = inputFile.next();
+                    }
+                }
+                if(line.equals("BATTERIES"))
+                {
+                    line = inputFile.next();
+                    while(!line.equals("ROBOT MODELS"))
+                    {
+                        String[] data = line.split("//");
+                        name = data[0];
+                        weight = Double.parseDouble(data[1]);
+                        cost = Double.parseDouble(data[2]);
+                        description = data[3];
+                        energy = Double.parseDouble(data[4]);
+                        power = Double.parseDouble(data[5]);
+                        createPart(name, "battery", weight, cost, description, energy, power);
+                        line = inputFile.next();
+                    }
+                }
+                if(line.equals("ROBOT MODELS"))
+                {
+                    line = inputFile.next();
+                    while(!line.equals("SALES ASSOCIATES"))
+                    {
+                        String[] data = line.split("//");
+                        number = Integer.parseInt(data[0]);
+                        if(number == 5)
+                        {
+                            name = data[1];
+                            cost = Double.parseDouble(data[2]);
+                            head = headList.get(Integer.parseInt(data[3]));
+                            motor = locomotorList.get(Integer.parseInt(data[4]));
+                            torso = torsoList.get(Integer.parseInt(data[5]));
+                            battery1 = batteryList.get(Integer.parseInt(data[6]));
+                            arm1 = armList.get(Integer.parseInt(data[7]));
+                            createRobotModel(name, cost, head, motor, torso, battery1, arm1);
+                        }
+                        else if(number == 6)
+                        {
+                            batteries = Integer.parseInt(data[1]);
+                            if(batteries == 1)
+                            {
+                                name = data[2];
+                                cost = Double.parseDouble(data[3]);
+                                head = headList.get(Integer.parseInt(data[4]));
+                                motor = locomotorList.get(Integer.parseInt(data[5]));
+                                torso = torsoList.get(Integer.parseInt(data[6]));
+                                battery1 = batteryList.get(Integer.parseInt(data[7]));
+                                arm1 = armList.get(Integer.parseInt(data[8]));
+                                arm2 = armList.get(Integer.parseInt(data[9]));
+                                createRobotModel(name, cost, head, motor, torso, battery1, arm1, arm2);
+                            }
+                            else if(batteries == 2)
+                            {
+                                name = data[2];
+                                cost = Double.parseDouble(data[3]);
+                                head = headList.get(Integer.parseInt(data[4]));
+                                motor = locomotorList.get(Integer.parseInt(data[5]));
+                                torso = torsoList.get(Integer.parseInt(data[6]));
+                                battery1 = batteryList.get(Integer.parseInt(data[7]));
+                                battery2 = batteryList.get(Integer.parseInt(data[8]));
+                                arm1 = armList.get(Integer.parseInt(data[9]));
+                                createRobotModel(name, cost, head, motor, torso, battery1, battery2, arm1);
+                            }
+                        }
+                        else if(number == 7)
+                        {
+                            batteries = Integer.parseInt(data[1]);
+                            if(batteries == 2)
+                            {
+                                name = data[2];
+                                cost = Double.parseDouble(data[3]);
+                                head = headList.get(Integer.parseInt(data[4]));
+                                motor = locomotorList.get(Integer.parseInt(data[5]));
+                                torso = torsoList.get(Integer.parseInt(data[6]));
+                                battery1 = batteryList.get(Integer.parseInt(data[7]));
+                                battery2 = batteryList.get(Integer.parseInt(data[8]));
+                                arm1 = armList.get(Integer.parseInt(data[9]));
+                                arm2 = armList.get(Integer.parseInt(data[10]));
+                                createRobotModel(name, cost, head, motor, torso, battery1, battery2, arm1, arm2);
+                            }
+                            else if(batteries == 3)
+                            {
+                                name = data[2];
+                                cost = Double.parseDouble(data[3]);
+                                head = headList.get(Integer.parseInt(data[4]));
+                                motor = locomotorList.get(Integer.parseInt(data[5]));
+                                torso = torsoList.get(Integer.parseInt(data[6]));
+                                battery1 = batteryList.get(Integer.parseInt(data[7]));
+                                battery2 = batteryList.get(Integer.parseInt(data[8]));
+                                battery3 = batteryList.get(Integer.parseInt(data[9]));
+                                arm1 = armList.get(Integer.parseInt(data[10]));
+                                createRobotModel(name, cost, head, motor, torso, battery1, battery2, battery3, arm1);
+                            }
+                        }
+                        else if(number == 8)
+                        {
+                            name = data[1];
+                            cost = Double.parseDouble(data[2]);
+                            head = headList.get(Integer.parseInt(data[3]));
+                            motor = locomotorList.get(Integer.parseInt(data[4]));
+                            torso = torsoList.get(Integer.parseInt(data[5]));
+                            battery1 = batteryList.get(Integer.parseInt(data[6]));
+                            battery2 = batteryList.get(Integer.parseInt(data[7]));
+                            battery3 = batteryList.get(Integer.parseInt(data[8]));
+                            arm1 = armList.get(Integer.parseInt(data[9]));
+                            arm2 = armList.get(Integer.parseInt(data[10]));
+                            createRobotModel(name, cost, head, motor, torso, battery1, battery2, battery3, arm1, arm2);
+                        }
+                        line = inputFile.next();
+                    }
+                }
+                if(line.equals("SALES ASSOCIATES"))
+                {
+                    line = inputFile.next();
+                    while(!line.equals("CUSTOMERS"))
+                    {
+                        newSalesAssoc(line);
+                        line = inputFile.next();
+                    }
+                }
+                if(line.equals("CUSTOMERS"))
+                {
+                    line = inputFile.next();
+                    while(!line.equals("ORDERS"))
+                    {
+                        String[] data = line.split("//");
+                        name = data[0];
+                        wallet = Double.parseDouble(data[1]);
+                        newCustomer(name, wallet);
+                        line = inputFile.next();
+                    }
+                }
+                if(line.equals("ORDERS"))
+                {
+                    line = inputFile.next();
+                    while(!line.equals("END OF FILE"))
+                    {
+                        String[] data = line.split("//");
+                        date = data[0];
+                        customerNum = Integer.parseInt(data[1]);
+                        salesNum = Integer.parseInt(data[2]);
+                        modelNum = Integer.parseInt(data[3]);
+                        status = Integer.parseInt(data[4]);
+                        placeOrder(new Date(date), customerNum, salesNum, robotModels.get(modelNum), new Status(status));
+                        line = inputFile.next();
+                    }
+                }
+                if(line.equals("END OF FILE"))
+                {
+                    System.out.println("\nFile has successfully loaded.\n");
+                    break;
+                }
+            }
+        }
+        catch (FileNotFoundException e){
+            System.out.println("File does not exist: " + e.getMessage());
+        }
+        catch (IOException e){
+            System.out.println("IO Error - the file does not fit the program's expected format: " + e.getMessage());
+        }
+        finally{
+            try{
+                inputFile.close();
+            } catch (NullPointerException e){}
+        }
     }
      
     public static void main(String[] args) {

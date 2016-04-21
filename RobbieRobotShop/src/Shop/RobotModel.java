@@ -34,6 +34,7 @@ public class RobotModel {
         this.modelNumber = modelNumber;
         this.price = price;
         this.robotParts = robotParts;
+        numRobotParts = robotParts.size();
         numRobots++;
     }
     
@@ -48,6 +49,7 @@ public class RobotModel {
         robotParts.add(body);
         robotParts.add(b1);
         robotParts.add(arm1);
+        numRobotParts = 5;
     }
     
     public RobotModel(String name, double price, Head head, Locomotor motor, Torso body, Battery b1, Arm arm1, Arm arm2)
@@ -62,6 +64,7 @@ public class RobotModel {
         robotParts.add(b1);
         robotParts.add(arm1);
         robotParts.add(arm2);
+        numRobotParts = 6;
     }
     
     public RobotModel(String name, double price, Head head, Locomotor motor, Torso body, Battery b1, Battery b2, Arm arm1)
@@ -76,6 +79,7 @@ public class RobotModel {
         robotParts.add(b1);
         robotParts.add(b2);
         robotParts.add(arm1);
+        numRobotParts = 6;
     }
     
     public RobotModel(String name, double price, Head head, Locomotor motor, Torso body, Battery b1, Battery b2, Arm arm1, Arm arm2)
@@ -91,6 +95,7 @@ public class RobotModel {
         robotParts.add(b2);
         robotParts.add(arm1);
         robotParts.add(arm2);
+        numRobotParts = 7;
     }
     
     public RobotModel(String name, double price, Head head, Locomotor motor, Torso body, Battery b1, Battery b2, Battery b3, Arm arm1)
@@ -106,6 +111,7 @@ public class RobotModel {
         robotParts.add(b2);
         robotParts.add(b3);
         robotParts.add(arm1);
+        numRobotParts = 7;
     }
     
     public RobotModel(String name, double price, Head head, Locomotor motor, Torso body, Battery b1, Battery b2, Battery b3, Arm arm1, Arm arm2)
@@ -122,6 +128,7 @@ public class RobotModel {
         robotParts.add(b3);
         robotParts.add(arm1);
         robotParts.add(arm2);
+        numRobotParts = 8;
     }
     
     // This is missing RobotPart[] - Ody
@@ -191,7 +198,57 @@ public class RobotModel {
         
         return 500/ (sum/robotParts.size());
     }
-  
     
+    public String shortPrint()
+    {
+        return String.format("Name: %25s \t Model Number: %d", name, modelNumber);
+    }
+    
+    @Override
+    public String toString()
+    {
+        String results = "\nName: " + name;
+        results += "\nModel Number: " + modelNumber;
+        results += "\nPrice: " + price;
+        results += "\nRobot Parts:\n";
+        int i = 0;
+        while(i < robotParts.size())
+        {
+            results += String.format("\t%d) %s\n", i, robotParts.get(i).shortPrint());
+            i++;
+        }
+        
+        return results;
+    }
+    
+    public String save()
+    {
+        if(numRobotParts == 5)
+            return String.format("5//%s//%.2f//%d//%d//%d//%d//%d\n", name, price, robotParts.get(0).getPartNumber(), robotParts.get(1).getPartNumber(), robotParts.get(2).getPartNumber(), robotParts.get(3).getPartNumber(), robotParts.get(4).getPartNumber());
+        else if(numRobotParts == 6)
+        {
+            if( ((Torso)robotParts.get(2)).getBatteryCompartments() == 1)
+                return String.format("6//1//%s//%.2f//%d//%d//%d//%d//%d//%d\n", name, price, robotParts.get(0).getPartNumber(), robotParts.get(1).getPartNumber(), robotParts.get(2).getPartNumber(), robotParts.get(3).getPartNumber(), robotParts.get(4).getPartNumber(), robotParts.get(5).getPartNumber());
+            else if( ((Torso)robotParts.get(2)).getBatteryCompartments() == 2)
+                return String.format("6//2//%s//%.2f//%d//%d//%d//%d//%d//%d\n", name, price, robotParts.get(0).getPartNumber(), robotParts.get(1).getPartNumber(), robotParts.get(2).getPartNumber(), robotParts.get(3).getPartNumber(), robotParts.get(4).getPartNumber(), robotParts.get(5).getPartNumber());
+            else
+                return "Error";
+        }
+        else if(numRobotParts == 7)
+        {
+            if( ((Torso)robotParts.get(2)).getBatteryCompartments() == 2)
+                return String.format("7//2//%s//%.2f//%d//%d//%d//%d//%d//%d//%d\n", name, price, robotParts.get(0).getPartNumber(), robotParts.get(1).getPartNumber(), robotParts.get(2).getPartNumber(), robotParts.get(3).getPartNumber(), robotParts.get(4).getPartNumber(), robotParts.get(5).getPartNumber(), robotParts.get(6).getPartNumber());
+            else if( ((Torso)robotParts.get(2)).getBatteryCompartments() == 3)
+                return String.format("7//3//%s//%.2f//%d//%d//%d//%d//%d//%d//%d\n", name, price, robotParts.get(0).getPartNumber(), robotParts.get(1).getPartNumber(), robotParts.get(2).getPartNumber(), robotParts.get(3).getPartNumber(), robotParts.get(4).getPartNumber(), robotParts.get(5).getPartNumber(), robotParts.get(6).getPartNumber());
+            else
+                return "Error";
+        }
+        else if(numRobotParts == 8)
+        {
+            return String.format("8//%s//%.2f//%d//%d//%d//%d//%d//%d//%d//%d\n", name, price, robotParts.get(0).getPartNumber(), robotParts.get(1).getPartNumber(), robotParts.get(2).getPartNumber(), robotParts.get(3).getPartNumber(), robotParts.get(4).getPartNumber(), robotParts.get(5).getPartNumber(), robotParts.get(6).getPartNumber(), robotParts.get(7).getPartNumber());
+        }
+        else
+            return "Error";
+    }
     
 }

@@ -186,5 +186,30 @@ public class Torso extends RobotPart{
     {
         this.locomotor = locomotor;
     }
+    
+    @Override
+    public String shortPrint()
+    {
+        return String.format("[Torso]\tName: %15s \t Part Number: %d", name, partNumber);
+    }
+    
+    @Override
+    public String toString()
+    {
+        String results = "\nName: " + name;
+        results += "\nComponent Type: torso";
+        results += "\nPart Number: " + partNumber;
+        results += "\nWeight: " + weight;
+        results += "\nCost: " + cost;
+        results += "\nBattery Compartments: " + batteryCompartments;
+        results += "\nDescription: " + description;
+        
+        return results;
+    }
+    
+    public String save()
+    {
+        return String.format("%s//%f//%.2f//%s//%d\n", name, weight, cost, description, batteryCompartments);
+    }
    
 }

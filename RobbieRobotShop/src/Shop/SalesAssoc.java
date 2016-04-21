@@ -13,7 +13,7 @@ public class SalesAssoc
     private String name;
     private int employeeNumber;
     private ArrayList<Order> orders; 
-    private static int numEmployees;
+    private static int numEmployees = 0;
     
     public SalesAssoc()
     {
@@ -70,6 +70,32 @@ public class SalesAssoc
     public void addOrder(Order order)
     {
         orders.add(order);
+    }
+    
+    public String shortPrint()
+    {
+        return String.format("Name: %25s \t Employee Number: %d", name, employeeNumber);
+    }
+    
+    @Override
+    public String toString()
+    {
+        String results = "\nName: " + name;
+        results += "\nCustomer Number: " + employeeNumber;
+        results += "\nOrders:\n";
+        int i = 0;
+        while(i < orders.size())
+        {
+            results += String.format("\t%d) %s\n", i, orders.get(i).shortPrint());
+            i++;
+        }
+        
+        return results;
+    }
+    
+    public String save()
+    {
+        return String.format("%s\n", name);
     }
 }
     

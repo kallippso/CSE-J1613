@@ -147,6 +147,16 @@ public class Order {
         return this.robotPrice() + this.calculateShipping() + this.calculateTax();
     }
     
+    public String save()
+    {
+        return String.format("%s//%d//%d//%d//%d\n", date, customer.getCustomerNumber(), salesAssoc.getEmployeeNumber(), robotModel.getModelNumber(), status.getStatus());
+    }
+    
+    public String shortPrint()
+    {
+        return String.format("Order Number: %5d \t Date: %s", orderNumber, date);
+    }
+    
     @Override
     public String toString()
     {

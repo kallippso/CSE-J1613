@@ -122,13 +122,35 @@ public class Arm extends RobotPart{
         return image;
     }
     
-    int powerConsumed(int speed){
+    public int powerConsumed(int speed){
         int time = 1;
         int watts = speed*time;
         return watts;
     }
     
-    //insert method to override from abstract class RobotPart here...
+    @Override
+    public String shortPrint()
+    {
+        return String.format("[Arm]\tName: %15s \t Part Number: %d", name, partNumber);
+    }
+    
+    @Override
+    public String toString()
+    {
+        String results = "\nName: " + name;
+        results += "\nComponent Type: arm";
+        results += "\nPart Number: " + partNumber;
+        results += "\nWeight: " + weight;
+        results += "\nCost: " + cost;
+        results += "\nDescription: " + description;
+        
+        return results;
+    }
+    
+    public String save()
+    {
+        return String.format("%s//%f//%.2f//%s\n", name, weight, cost, description);
+    }
     
     public static void main()
     {

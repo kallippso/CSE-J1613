@@ -169,4 +169,29 @@ public class Locomotor extends RobotPart{
         speed = speed;
         return speed;
      }
+    
+    @Override
+    public String shortPrint()
+    {
+        return String.format("[Locomotor]\tName: %15s \t Part Number: %d", name, partNumber);
+    }
+    
+    @Override
+    public String toString()
+    {
+        String results = "\nName: " + name;
+        results += "\nComponent Type: locotmotor";
+        results += "\nPart Number: " + partNumber;
+        results += "\nWeight: " + weight;
+        results += "\nCost: " + cost;
+        results += "\nMax Speed: " + maxSpeed;
+        results += "\nDescription: " + description;
+        
+        return results;
+    }
+    
+    public String save()
+    {
+        return String.format("%s//%f//%.2f//%s//%d\n", name, weight, cost, description, maxSpeed);
+    }
 }

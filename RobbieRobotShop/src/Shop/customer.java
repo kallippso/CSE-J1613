@@ -36,6 +36,14 @@ public class Customer
         orders = new ArrayList<>();
     }
     
+    public Customer(String name, double wallet)
+    {
+        this.name = name;
+        customerNumber = numCustomers++;
+        this.wallet = wallet;
+        orders = new ArrayList<>();
+    }
+    
     public Customer(String name, int customerNumber)
     {
         this.name = name;
@@ -129,6 +137,33 @@ public class Customer
             System.out.println(orders.get(i));
             i++;
         }
+    }
+    
+    public String shortPrint()
+    {
+        return String.format("Name: %25s \t Customer Number: %d", name, customerNumber);
+    }
+    
+    @Override
+    public String toString()
+    {
+        String results = "\nName: " + name;
+        results += "\nCustomer Number: " + customerNumber;
+        results += "\nWallet: " + wallet;
+        results += "\nOrders:\n";
+        int i = 0;
+        while(i < orders.size())
+        {
+            results += String.format("\t%d) %s\n", i, orders.get(i).shortPrint());
+            i++;
+        }
+        
+        return results;
+    }
+    
+    public String save()
+    {
+        return String.format("%s//%.2f\n", name, wallet);
     }
     
     public static void main(String [] args)
