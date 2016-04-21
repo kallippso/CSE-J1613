@@ -5,13 +5,13 @@
  */
 package GUI;
 
-import java.util.Map;
+import java.io.Serializable;
 
 /**
  *
  * @author christian
  */
-public class User {
+public class User implements Serializable {
     
       String username;
       String password;

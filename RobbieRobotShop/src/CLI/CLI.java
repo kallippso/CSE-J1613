@@ -375,11 +375,11 @@ public class CLI {
         boolean okay;
         final int MIN_YEAR = 2000, MAX_YEAR = 2020;
         int num, m, d, y, search, s;
-        Date date;
+        Shop.Date date;
         //Customer cust;
         //SalesAssoc sales;
         //RobotModel model;
-        Status status;
+        Shop.Status status;
         
         System.out.print("Enter the order number of the order: ");
         num = keyboard.nextInt();
@@ -387,7 +387,7 @@ public class CLI {
         reply = keyboard.next();
         if(reply.toLowerCase().equals("y"))
         {
-            date = new Date();
+            date = new Shop.Date();
         }
         else
         {
@@ -412,7 +412,7 @@ public class CLI {
                 System.out.printf("Invalid year. Enter a integer between %d and %d (inclusive): ", MIN_YEAR, MAX_YEAR);
                 y = keyboard.nextInt();
             }
-            date = new Date(m, d, y);
+            date = new Shop.Date(m, d, y);
         }
         okay = true;
         while(okay)
@@ -454,7 +454,7 @@ public class CLI {
                 System.out.print("Invalid status. Enter an integer between 0 and 4 (inclusive): ");
                 s = keyboard.nextInt();
             }
-            status = new Status(s);
+            status = new Shop.Status(s);
             //robotShop.placeOrder(num, date, cust, sales, model, status);
             System.out.println("\nOrder number " + num + " for robot model " + search + " has been placed on " + date + " by a sales associate for a customer.\nThe status of the order is: " + status);
             okay = false;
@@ -539,7 +539,7 @@ public class CLI {
     
     public void viewOrders()
     {
-        robotShop.viewOrders();
+        //Shop.viewOrders();
     }
     
     public static void main(String [] args)

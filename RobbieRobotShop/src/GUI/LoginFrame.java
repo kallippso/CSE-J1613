@@ -36,10 +36,20 @@ public class LoginFrame extends JFrame {
   
   FileInputStream fis;
   ObjectInputStream ois;
+  
+  Settings settings;
 
 
-  public LoginFrame()  {
+  public LoginFrame(Settings settings)  {
     super("Welcome to Robbie's Robot Shop");
+    this.users = settings.users;
+    this.settings = settings;
+
+    try {
+        cursorMover = new Robot();
+    } catch(Exception e)
+    {
+    }
   }
   
   public int checkIdentity()
@@ -74,33 +84,9 @@ public class LoginFrame extends JFrame {
     getContentPane().add(loginPanel);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setVisible(true);
-
     
     
-    File check = new File("C:/Users/christian/Documents/NetBeansProjects/CSE-J1613/RobbieRobotShop/test");
-    if (check.exists()) {
-
-      //Checks if the file exists. will not add anything if the file does exist.
-    } else {
-      try {
-        File fileInstance = new File("C:/Users/christian/Documents/NetBeansProjects/CSE-J1613/RobbieRobotShop/test"); // write MenuArray to ObjectOutputStream
-        fileInstance.createNewFile();
-        fis = new FileInputStream(fileInstance);
-        ois = new ObjectInputStream(fis);   
-        users = (ArrayList<User>)ois.readObject();
-      }
-      catch(Exception e) {
-        e.printStackTrace();
-      }
-    }
-
-    
-        //fos = new FileOutputStream(fileInstance, true);
-        //oos = new ObjectOutputStream(fos);   
-        //oos.writeObject(users);
-    
-
-
+    // i dont what the actual fuck is supposed to go here but whatever it was it was causing an error
 
 
     loginButton.addActionListener(new ActionListener() {
@@ -116,14 +102,16 @@ public class LoginFrame extends JFrame {
           char[] password;
           String printedUsername = userText.getText();
           String printedPassword = passText.getText();
-
+          
+          if (printedUsername.equals("") && printedPassword.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please insert Username and Password");
+            return;
+          }
 
           for(User user: users)
           {
-              if(printedUsername.equals(user.getUsername()))
-              {
-                  if(printedPassword.equals(user.getPassword()))
-                  {
+              if (printedUsername.equals(user.getUsername())) {
+                  if (printedPassword.equals(user.getPassword())) {
                         userClassification = user.getClassification();
                         JFrame currentFrame = null;
                         JFrame testFrame = new JFrame("Shop Creation/Management Tool");
@@ -133,35 +121,24 @@ public class LoginFrame extends JFrame {
                         testFrame.setJMenuBar(new GUIToolbar().createSalesToolbar());
                         testFrame.setVisible(true);
                         dispose();
+                        return;
                   }
                   else
                   {
                       JOptionPane sorry = new JOptionPane();
                       cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
-                      sorry.showConfirmDialog(null, "Password was not found for user.", "ERROR", JOptionPane.OK_CANCEL_OPTION);
+                      sorry.showConfirmDialog(null, "Password entered was incorrect.", "ERROR", JOptionPane.OK_CANCEL_OPTION);
+                      return;
                   }
               }
-              else
-              {
-                  JOptionPane sorry = new JOptionPane();
-                  cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
-                  sorry.showConfirmDialog(null, "User was not found.", "ERROR", JOptionPane.OK_CANCEL_OPTION);
-              }
           }
-
-          if (printedUsername.equals("") && printedPassword.equals("")) {
-            JOptionPane.showMessageDialog(null, "Please insert Username and Password");
-          } 
-          else {
-
-            JOptionPane.showMessageDialog(null, "Wrong Username / Password");
-            userText.setText("");
-            passText.setText("");
-            userText.requestFocus();
-          }
-        } 
-        catch (Exception ioE) {
-          
+        
+            JOptionPane sorry = new JOptionPane();
+            cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
+            sorry.showConfirmDialog(null, "User was not found.", "ERROR", JOptionPane.OK_CANCEL_OPTION);
+                  
+        } catch (Exception er) {
+          er.printStackTrace();
         }
       }
     }
@@ -169,7 +146,7 @@ public class LoginFrame extends JFrame {
 
     newUser.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        NewUser user = new NewUser();
+        NewUser user = new NewUser(settings);
         dispose();
       }
     }

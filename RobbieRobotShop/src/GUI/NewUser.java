@@ -5,13 +5,11 @@
  */
 package GUI;
 
-import static com.sun.org.apache.xerces.internal.util.DOMUtil.setVisible;
+//import static com.sun.org.apache.xerces.internal.util.DOMUtil.setVisible;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
@@ -39,8 +37,11 @@ public class NewUser extends JFrame {
   JTextField passText;
   JLabel username;
   JLabel password;
-  //JTextField classification;
+  JLabel classText;
+  JLabel classExplain;
+  JTextField classification;
   ArrayList<User> users;
+  Settings settings;
   
   boolean isInUse = false;
   
@@ -57,8 +58,16 @@ public class NewUser extends JFrame {
 
 
 
-  public NewUser() {
+  public NewUser(Settings settings) {
     super("Please complete registration.");
+    this.users = settings.users;
+    this.settings = settings;
+    
+    try {
+        cursorMover = new Robot();
+    } catch(Exception e)
+    {
+    }
 
     create = new JButton("Create");
     newUserPanel = new JPanel();
@@ -66,57 +75,55 @@ public class NewUser extends JFrame {
     passText = new JPasswordField(15);
     username = new JLabel("Username: ");
     password = new JLabel("Password: ");
+    classification = new JTextField(15);
+    classText = new JLabel("Class(0, 1, 2):");
+    classExplain = new JLabel("0 - Cust, 1 - SA, 2 - Manager");
+    
 
-
-    setSize(300, 200);
+    setSize(300, 220);
     setLocation(500, 280);
     newUserPanel.setLayout (null); 
 
 
-    create.setBounds(110, 110, 80, 20);
+    create.setBounds(110, 140, 80, 20);
     userText.setBounds(110, 20, 150, 20);
     passText.setBounds(110, 55, 150, 20);
+    classification.setBounds(110, 90, 150, 20);
     username.setBounds(30, 18, 80, 20);
     password.setBounds(30, 53, 80, 20);
+    classText.setBounds(30, 88, 80, 20);
+    classExplain.setBounds(30, 110, 180, 20);
 
     newUserPanel.add(create);
     newUserPanel.add(userText);
     newUserPanel.add(passText);
     newUserPanel.add(username);
     newUserPanel.add(password);
+    newUserPanel.add(classification);
+    newUserPanel.add(classText);
+    newUserPanel.add(classExplain);
+    
 
     getContentPane().add(newUserPanel);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setVisible(true);
 
-    File check = new File("C:/Users/christian/Documents/NetBeansProjects/CSE-J1613/RobbieRobotShop/test");
-    if (check.exists()) {
-        if(users == null)
-            users = new ArrayList<>();
-      //Checks if the file exists. will not add anything if the file does exist.
-    } else {
-      try {
-        File fileInstance = new File("C:/Users/christian/Documents/NetBeansProjects/CSE-J1613/RobbieRobotShop/test"); // write MenuArray to ObjectOutputStream
-        fis = new FileInputStream(fileInstance);
-        ois = new ObjectInputStream(fis);   
-        users = (ArrayList<User>)ois.readObject();
-        if(users == null)
-            users = new ArrayList<>();
-      }
-      catch(Exception e) {
-        e.printStackTrace();
-      }
-    }
-
-
-
-
     create.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        try {        
-          File fileInstance = new File("C:/Users/christian/Documents/NetBeansProjects/CSE-J1613/RobbieRobotShop/test");
+      public void actionPerformed(ActionEvent event) {
+          
+          // populate users;
+          
           String printedUsername = userText.getText();
           String printedPassword = passText.getText();
+          int printedClassification = Integer.parseInt(classification.getText());
+          
+          if(printedClassification < 0 || printedClassification > 2){
+             isInUse = true;
+                  JOptionPane sorry = new JOptionPane();
+                  cursorMover.mouseMove((int)(screenSize.getWidth()/2.0), (int)(screenSize.getHeight()/2.0));
+                  sorry.showConfirmDialog(null, "Invalid classification.", "ERROR", JOptionPane.OK_CANCEL_OPTION);
+             
+          }
           
           for(int i = 0; i < users.size(); i++)
           {
@@ -131,21 +138,18 @@ public class NewUser extends JFrame {
           
           if(!isInUse)
           {
-              users.add(new User(printedUsername, printedPassword));
+              users.add(new User(printedUsername, printedPassword, printedClassification));
               isInUse = false;
-              fos = new FileOutputStream(fileInstance, true);
-              oos = new ObjectOutputStream(fos);   
-              oos.writeObject(users);
+              try {
+                FileFunctions.serialize(users, settings.usersFile);
+              } catch (Exception e) {
+                  // e
+              }
               //go to login screen
-              LoginFrame logIn = new LoginFrame();
+              LoginFrame logIn = new LoginFrame(settings);
               logIn.checkIdentity();
+              dispose();
           }
-          
-          
-        } 
-        catch (IOException d) {
-          d.printStackTrace();
-        }
       }
     }
     );

@@ -14,17 +14,11 @@ import java.util.ArrayList;
 
 public class RobotModel {
     private String name;
-<<<<<<< HEAD
     int modelNumber;
     double price;
-    RobotPart[] robotParts;
     int numRobotParts;
-=======
-    private int modelNumber;
-    private double price;
     private ArrayList<RobotPart> robotParts;
     private int numRobots;
->>>>>>> origin/master
     
     public RobotModel()
     {
@@ -43,7 +37,6 @@ public class RobotModel {
         numRobotParts++;
     }
     
-<<<<<<< HEAD
     public String getName()
     {
         return name;
@@ -61,7 +54,7 @@ public class RobotModel {
     
     public RobotPart[] getRobotParts()
     {
-        return robotParts;
+        return (RobotPart[])robotParts.toArray();
     }
     
     public int getNumRobotParts()
@@ -86,9 +79,9 @@ public class RobotModel {
     
     public void setRobotParts(RobotPart[] robotParts)
     {
-        this.robotParts = robotParts;
+        //this.robotParts = robotParts;
     }
-=======
+    
     public RobotModel(String name, int modelNumber, double price, Head head, Locomotor motor, Torso body, Battery b1, Arm arm1)
     {
         this.name = name;                                   // Constructor for a robot with 1 battery and 1 arm
@@ -104,11 +97,10 @@ public class RobotModel {
     }
     
     // This is missing RobotPart[] - Ody
->>>>>>> origin/master
     
     public double componentCost()
     {
-        return price/robotParts.length;
+        return price/robotParts.size();
     }
     
     public double maxSpeed()
@@ -117,7 +109,7 @@ public class RobotModel {
         for(RobotPart r: robotParts)
             sum += r.getWeight();
         
-        return 500/ (sum/robotParts.length);
+        return 500/ (sum/robotParts.size());
     }
   
     

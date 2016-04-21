@@ -10,23 +10,29 @@ package GUI;
  * @author christian
  */
 
-import java.awt.Container;
-import javax.swing.*;
+import java.io.File;
+import java.util.ArrayList;
 
 public class GUITest {
     
     public static void main(String[] args)
     {
-        /*LoginFrame test = new LoginFrame();
-        test.checkIdentity();*/                 //Login test case
+        Settings settings = new Settings();
+        
+        //File roboPartsFile = new File("C:\\Users\\Christian\\Desktop\\cs\\roboParts.txt");
+        
+        
+        
+        LoginFrame test = new LoginFrame(settings);
+        test.checkIdentity();                //Login test case
         
         //Sales toolbar
-        JFrame testFrame = new JFrame("Shop Creation/Management Tool");
+        /*JFrame testFrame = new JFrame("Shop Creation/Management Tool");
         testFrame.setSize(600, 480);
         testFrame.setLocation(100,100);
         testFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         testFrame.setJMenuBar(new GUIToolbar().createSalesToolbar());
         testFrame.setVisible(true);
-        GUIPanel test = new GUIPanel(testFrame);
+        GUIPanel test = new GUIPanel(testFrame);*/
     }
 }
